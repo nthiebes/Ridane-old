@@ -1,0 +1,188 @@
+*, *:before, *:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none; }
+
+html, body {
+  background-color: #151515;
+  overflow: hidden; }
+
+#outer-wrapper {
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0; }
+
+#inner-wrapper {
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow: hidden; }
+
+canvas {
+  display: block;
+  position: absolute; }
+
+#overlay {
+  background-color: #000;
+  opacity: 0.5;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  display: none; }
+
+.menu {
+  left: 15px;
+  bottom: 15px;
+  background-color: #CCC;
+  z-index: 3;
+  position: absolute;
+  top: 70px;
+  right: 15px;
+  display: none; }
+
+h1 {
+  text-align: center;
+  text-transform: uppercase;
+  margin-bottom: 20px; }
+
+button {
+  position: relative;
+  display: block;
+  margin: 0 auto;
+  padding: 10px;
+  margin-bottom: 20px; }
+
+#menu {
+  position: absolute;
+  height: 40px;
+  width: 40px;
+  background-color: #999;
+  z-index: 1;
+  right: 55px;
+  top: 5px; }
+
+#sound {
+  position: absolute;
+  height: 40px;
+  width: 40px;
+  background-color: #999;
+  z-index: 1;
+  right: 5px;
+  top: 5px; }
+
+#fps {
+  color: #FFFFFF;
+  position: absolute;
+  z-index: 1;
+  top: 15px;
+  left: 5px; }
+
+#outer-hp {
+  background-color: #900;
+  height: 10px;
+  left: 5px;
+  position: absolute;
+  top: 5px;
+  max-width: 200px;
+  z-index: 1;
+  right: 105px; }
+
+#inner-hp {
+  background-color: #090;
+  height: 10px;
+  position: absolute;
+  width: 100%;
+  z-index: 1; }
+
+#mobile-controls {
+  position: absolute;
+  bottom: 0;
+  height: 165px;
+  left: 0;
+  right: 0;
+  opacity: 0.30;
+  z-index: 1;
+  display: none; }
+  #mobile-controls .move {
+    background-color: #999999;
+    border: 1px solid #000000;
+    height: 50px;
+    width: 50px;
+    position: absolute; }
+    #mobile-controls .move:hover, #mobile-controls .move:active {
+      background-color: #fff; }
+
+#fight {
+  background-color: #999999;
+  border: 1px solid #000000;
+  height: 100px;
+  width: 100px;
+  position: absolute;
+  right: 15px;
+  top: 30px; }
+  #fight:hover, #fight:active {
+    background-color: #fff; }
+
+#top {
+  left: 65px;
+  top: 0px; }
+
+#top-right {
+  left: 115px;
+  top: 0px; }
+
+#right {
+  left: 115px;
+  top: 50px; }
+
+#bottom-right {
+  left: 115px;
+  top: 100px; }
+
+#bottom {
+  left: 65px;
+  top: 100px; }
+
+#bottom-left {
+  left: 15px;
+  top: 100px; }
+
+#left {
+  left: 15px;
+  top: 50px; }
+
+#top-left {
+  left: 15px;
+  top: 0px; }
+
+@media (min-height: 512px) {
+  #inner-wrapper {
+    margin-top: -256px;
+    top: 50%;
+    height: 512px; } }
+@media (min-width: 800px) {
+  #inner-wrapper {
+    left: 50%;
+    margin-left: -400px;
+    width: 800px; } }
+@media (min-width: 500px) {
+  .menu {
+    left: 50%;
+    margin-left: -235px;
+    right: auto;
+    width: 470px; } }

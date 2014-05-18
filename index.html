@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ridane &#60;&#62; A Canvas Action-Adventure</title>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-title" content="Ridane">
+
+	<link rel="stylesheet" href="css/style.css" type="text/css">
+</head>
+
+<body>
+	<div id="outer-wrapper">
+		<div id="inner-wrapper">
+			<div id="outer-hp">
+				<div id="inner-hp"></div>
+			</div>
+
+			<div id="fps"></div>
+
+			<div id="sound"></div>
+
+			<div id="menu"></div>
+
+			<div id="overlay"></div>
+
+			<div class="menu" id="main-menu">
+				<button id="play-button">Play</button>
+				<button class="help-button">Help</button>
+				<button id="credits-button">Credits</button>
+			</div>
+
+			<div class="menu" id="pause-menu">
+				<h1>Game paused</h1>
+				<button id="resume-button">Resume</button>
+				<button class="help-button">Help</button>
+				<button class="main-menu-button">Main Menu</button>
+			</div>
+
+			<div class="menu" id="game-over-menu">
+				<h1>Game Over</h1>
+				<button id="play-again-button">Play Again</button>
+				<button class="help-button">Help</button>
+				<button class="main-menu-button">Main Menu</button>
+			</div>
+
+			<div class="menu" id="level-complete-menu">
+				<h1>Level Completed!</h1>
+				<button id="next-level-button">Next Level</button>
+				<button class="help-button">Help</button>
+				<button class="main-menu-button">Main Menu</button>
+			</div>
+
+			<div class="menu" id="help-menu">
+				<h1>Help</h1>
+				<button class="back-button">&#60; Back</button>
+			</div>
+
+			<div class="menu" id="credits-menu">
+				<h1>Credits</h1>
+				<button class="back-button">&#60; Back</button>
+				<h2>Game made by</h2>
+				<p>Nico Thiebes</p>
+				<h2>Used music</h2>
+				<p><a href="http://music.rhsoundtracks.net/album/collection-1-free-music">RH Soundtracks</a> <a href="http://creativecommons.org/licenses/by-nc-nd/3.0/">(CC BY-NC-ND 3.0)</a></p>
+				<p><a href="http://www.mattipaalanen.com/projects.html">Celestial Aeon Project</a> <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/">(CC BY-NC-SA 3.0)</a></p>
+				<h2>Used graphics</h2>
+				<p>...</p>
+			</div>
+
+			<div id="mobile-controls">
+				<div class="move" id="top"></div>
+				<div class="move" id="top-right"></div>
+				<div class="move" id="right"></div>
+				<div class="move" id="bottom-right"></div>
+				<div class="move" id="bottom"></div>
+				<div class="move" id="bottom-left"></div>
+				<div class="move" id="left"></div>
+				<div class="move" id="top-left"></div>
+				<div id="fight"></div>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript" src="js/compiled.min.js"></script>
+</body>
+</html>
