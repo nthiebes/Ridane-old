@@ -20,4 +20,4 @@ Game created by **Nico Thiebes**
 * [Matti Paalanen - Celestial Aeon Project](http://www.mattipaalanen.com/projects.html) ([CC BY-NC-SA 3.0](http://creativecommons.org/licenses/by-nc-sa/3.0/))
 
 #####Used graphics
-* [Tilesets from Daniel Cook](http://www.lostgarden.com/2006/07/more-free-game-graphics.html)
+* ["Free game tiles" by Daniel Cook](http://www.lostgarden.com/2006/07/more-free-game-graphics.html) ([CC BY 3.0](http://creativecommons.org/licenses/by/3.0/))
