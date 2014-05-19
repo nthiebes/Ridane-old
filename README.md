@@ -7,12 +7,10 @@ Early testing, more info will follow.
 
 
 ###Testlink
-===========
 http://grindkoala.com/Ridane/
 
 
 ###Credits
-==========
 Game created by **Nico Thiebes**
 
 #####Used music
