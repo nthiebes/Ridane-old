@@ -3,9 +3,9 @@ Ridane
 
 **Canvas Action-Adventure**
 
-Early tests, more info will follow.
-
 *Development status: **Pre-alpha***
+
+Early tests, more information will follow.
 
 
 ###Testlink
