@@ -3,9 +3,9 @@ Ridane
 
 **Canvas Action-Adventure**
 
-*Development status: **Pre-alpha***
+Ridane will be an online action-adventure based on web technologies such as canvas and JavaScript.
 
-Early tests, more information will follow.
+A detailed description will follow since it is still in a very early development state.
 
 
 ###Testlink
