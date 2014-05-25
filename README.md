@@ -9,8 +9,7 @@ A detailed description will follow since it is still in a very early development
 
 
 ###Testlink
-http://grindkoala.com/Ridane/
-
+You can try out the current test version [here](http://grindkoala.com/Ridane/).
 
 ###Credits
 Game created by **Nico Thiebes**
