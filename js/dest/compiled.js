@@ -1910,10 +1910,10 @@ function eventHandlers(){
     });*/
 
     // Back button credits
-    document.getElementById('back-button-credits').addEventListener('click', function(){
+    /*document.getElementById('back-button-credits').addEventListener('click', function(){
         document.getElementById('credits-menu').style.display = 'none';
         document.getElementById('main-menu').style.display = 'block';
-    });
+    });*/
 
     // Play again button
     document.getElementById('play-again-button').addEventListener('click', function(){
