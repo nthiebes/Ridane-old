@@ -14,23 +14,32 @@
 <body>
 	<div id="outer-wrapper">
 		<div id="inner-wrapper">
-			<div id="outer-hp">
-				<div id="inner-hp"></div>
+			<div id="game-interface">
+				<div id="outer-hp">
+					<div id="inner-hp"></div>
+				</div>
+
+				<div id="fps"></div>
+
+				<div id="menu">Menu</div>
 			</div>
+			<div id="sound">Sound</div>
 
-			<div id="fps"></div>
+			<div id="fog"></div>
 
-			<div id="sound"></div>
+			<canvas id="rain" width="784" height="512"></canvas>
 
-			<div id="menu"></div>
+			<div id="lightning"></div>
 
 			<div id="overlay"></div>
 
 			<div class="menu" id="main-menu">
 				<button id="play-button">Play</button>
-				<button class="help-button">Help</button>
-				<button id="credits-button">Credits</button>
+				<button id="help-button-main">Help</button>
+				<!--button id="credits-button"--><a href="https://github.com/nthiebes/Ridane" target="_blank">Credits<span> (on GitHub)</span></a>
 			</div>
+			<div id="ridane"></div>
+			<div id="ridane-glow"></div>
 
 			<div class="menu" id="pause-menu">
 				<h1>Game paused</h1>
@@ -49,24 +58,32 @@
 			<div class="menu" id="level-complete-menu">
 				<h1>Level Completed!</h1>
 				<button id="next-level-button">Next Level</button>
-				<button class="help-button">Help</button>
+				<button id="help-button">Help</button>
 				<button class="main-menu-button">Main Menu</button>
 			</div>
 
 			<div class="menu" id="help-menu">
 				<h1>Help</h1>
-				<button class="back-button">&#60; Back</button>
+				<button id="back-button">&#60; Back</button>
 			</div>
 
-			<div class="menu" id="credits-menu">
-				<h1>Credits</h1>
-				<button class="back-button">&#60; Back</button>
+			<div class="menu-main" id="help-menu-main">
+				<button id="back-button-help">&#60; Back</button>
+			</div>
+
+			<div class="menu-main" id="credits-menu">
+				<button id="back-button-credits">&#60; Back</button>
 				<h2>Game made by</h2>
 				<p>Nico Thiebes</p>
 				<h2>Used music</h2>
 				<p><a href="http://music.rhsoundtracks.net/album/collection-1-free-music">RH Soundtracks</a> <a href="http://creativecommons.org/licenses/by-nc-nd/3.0/">(CC BY-NC-ND 3.0)</a></p>
 				<p><a href="http://www.mattipaalanen.com/projects.html">Celestial Aeon Project</a> <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/">(CC BY-NC-SA 3.0)</a></p>
 				<h2>Used graphics</h2>
+				<p>...</p>
+				<p>...</p>
+				<p>...</p>
+				<p>...</p>
+				<p>...</p>
 				<p>...</p>
 			</div>
 
@@ -80,6 +97,32 @@
 				<div class="move" id="left"></div>
 				<div class="move" id="top-left"></div>
 				<div id="fight"></div>
+			</div>
+
+			<div id="loading">
+				<div id="loading-text">Loading pixels</div>
+				<div class="windows8">
+					<div class="wBall" id="wBall_1">
+						<div class="wInnerBall">
+						</div>
+					</div>
+					<div class="wBall" id="wBall_2">
+						<div class="wInnerBall">
+						</div>
+					</div>
+					<div class="wBall" id="wBall_3">
+						<div class="wInnerBall">
+						</div>
+					</div>
+					<div class="wBall" id="wBall_4">
+						<div class="wInnerBall">
+						</div>
+					</div>
+					<div class="wBall" id="wBall_5">
+						<div class="wInnerBall">
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>

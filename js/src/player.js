@@ -3,7 +3,7 @@
 //////////////////////////////////////////////
 var playerAttr = {
 	nudeGuy: {
-		health: 100,
+		health: 75,
 		healthGeneration: 5,
 		damage: 10,
 		spriteOffset: 0,

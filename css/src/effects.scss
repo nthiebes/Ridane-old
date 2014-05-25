@@ -1,0 +1,132 @@
+/*////////////////////////////////////////////
+// Effects                                  //
+////////////////////////////////////////////*/
+#fog {
+    background: url("../img/fog.png") repeat-x scroll 0 0 transparent;
+    height: 100%;
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+    opacity: 0.2;
+    @include animation(fog 50s linear infinite);
+
+    &.started {
+        opacity: 0.5;
+    }
+}
+
+@media (min-width: 784px){
+    #fog {
+        opacity: 0.5;
+    }
+}
+
+@media (min-height: 517px){
+    #fog {
+        opacity: 0.5;
+    }
+}
+
+@-moz-keyframes fog {
+    0% { background-position: 0 0; }
+    100% { background-position: -784px 0; }
+}
+@-webkit-keyframes fog {  
+    0% { background-position: 0 0; }
+    100% { background-position: -784px 0; }
+}
+@-ms-keyframes fog {  
+    0% { background-position: 0 0; }
+    100% { background-position: -784px 0; }
+}
+@-o-keyframes fog {  
+    0% { background-position: 0 0; }
+    100% { background-position: -784px 0; }
+}
+@keyframes fog {  
+    0% { background-position: 0 0; }
+    100% { background-position: -784px 0; }
+}
+
+#rain {
+    height: 100%;
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+    opacity: 1;
+}
+
+#lightning {
+    height: 100%;
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+    background-color: #fff;
+    @include animation(lightning 20s linear infinite alternate);
+}
+
+@-moz-keyframes lightning {
+    0% { opacity: 0; }
+    25% { opacity: 0; }
+    26% { opacity: 0.5; }
+    27% { opacity: 0; }
+    70% { opacity: 0; }
+    71% { opacity: 0.5; }
+    72% { opacity: 0; }
+    80% { opacity: 0; }
+    81% { opacity: 0.5; }
+    82% { opacity: 0; }
+    100% { opacity: 0; }
+}
+@-webkit-keyframes lightning {  
+    0% { opacity: 0; }
+    25% { opacity: 0; }
+    26% { opacity: 0.5; }
+    27% { opacity: 0; }
+    70% { opacity: 0; }
+    71% { opacity: 0.5; }
+    72% { opacity: 0; }
+    80% { opacity: 0; }
+    81% { opacity: 0.5; }
+    82% { opacity: 0; }
+    100% { opacity: 0; }
+}
+@-ms-keyframes lightning {  
+    0% { opacity: 0; }
+    25% { opacity: 0; }
+    26% { opacity: 0.5; }
+    27% { opacity: 0; }
+    70% { opacity: 0; }
+    71% { opacity: 0.5; }
+    72% { opacity: 0; }
+    80% { opacity: 0; }
+    81% { opacity: 0.5; }
+    82% { opacity: 0; }
+    100% { opacity: 0; }
+}
+@-o-keyframes lightning {  
+    0% { opacity: 0; }
+    25% { opacity: 0; }
+    26% { opacity: 0.5; }
+    27% { opacity: 0; }
+    70% { opacity: 0; }
+    71% { opacity: 0.5; }
+    72% { opacity: 0; }
+    80% { opacity: 0; }
+    81% { opacity: 0.5; }
+    82% { opacity: 0; }
+    100% { opacity: 0; }
+}
+@keyframes lightning {  
+    0% { opacity: 0; }
+    25% { opacity: 0; }
+    26% { opacity: 0.5; }
+    27% { opacity: 0; }
+    70% { opacity: 0; }
+    71% { opacity: 0.5; }
+    72% { opacity: 0; }
+    80% { opacity: 0; }
+    81% { opacity: 0.5; }
+    82% { opacity: 0; }
+    100% { opacity: 0; }
+}

@@ -1,26 +1,29 @@
 /*////////////////////////////////////////////
+// Mixins                                   //
+////////////////////////////////////////////*/
+@import 'mixins';
+
+
+/*////////////////////////////////////////////
 // General                                  //
 ////////////////////////////////////////////*/
 *, *:before, *:after {
-    -moz-box-sizing: border-box;
+    /*-moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
-    box-sizing: border-box;
+    box-sizing: border-box;*/
     padding: 0;
     margin: 0;
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+    @include user-select( none );
 }
 
 html, body {
-    background-color: #151515;
+    font-family: "courier new",monospace,sans-serif;
     overflow: hidden;
+    color: #DDD;
 }
 
 #outer-wrapper {
+    background: #111;
     left: 0;
     position: absolute;
     right: 0;
@@ -35,11 +38,74 @@ html, body {
     top: 0;
     bottom: 0;
     overflow: hidden;
+
+    &.play canvas {
+        opacity: 1;
+        @include transition( opacity 1s linear );
+    }
+
+    &.started canvas {
+        display: block;
+    }
 }
 
 canvas {
     display: block;
+    opacity: 0;
     position: absolute;
+}
+
+
+/*////////////////////////////////////////////
+// Loading                                  //
+////////////////////////////////////////////*/
+@import 'loading';
+
+
+/*////////////////////////////////////////////
+// Desktop view                             //
+////////////////////////////////////////////*/
+@media (min-height: 517px){
+    body {
+        background: url("../img/bg.png") repeat scroll center 2px #111;
+    }
+
+    #outer-wrapper {
+        background: url("../img/frame.png") no-repeat scroll center -118px transparent;
+    }
+
+    #inner-wrapper {
+        height: 512px;
+        top: 5px;
+    }
+}
+
+@media (min-height: 637px){
+    
+
+    body #outer-wrapper {
+        background-position: center 2px;
+    }
+
+    #inner-wrapper {
+        top: 125px;
+    }
+}
+
+@media (min-width: 784px){
+    body {
+        background: url("../img/bg.png") repeat scroll center 2px #111;
+    }
+
+    #outer-wrapper {
+        background: url("../img/frame.png") no-repeat scroll center -118px transparent;
+    }
+
+    #inner-wrapper {
+        left: 50%;
+        margin-left: -392px;
+        width: 784px;
+    }
 }
 
 
@@ -58,49 +124,184 @@ canvas {
     display: none;
 }
 
+#game-interface {
+    display: none;
+
+    &.started {
+        display: block;
+    }
+}
+
+#main-menu {
+    background: transparent;
+    bottom: 0;
+    left: 0;
+    margin: 0;
+    right: 0;
+    top: 200px;
+    width: auto;
+    display: block;
+    text-align: center;
+}
+
+#ridane {
+    background: url("../img/ridane.png") no-repeat scroll 0 0 transparent;
+    height: 215px;
+    left: 114px;
+    position: absolute;
+    top: -26px;
+    width: 558px;
+    z-index: 1;
+}
+
+#ridane-glow {
+    background: url("../img/ridane-glow.png") no-repeat scroll 0 0 transparent;
+    height: 215px;
+    left: 119px;
+    position: absolute;
+    top: -27px;
+    width: 558px;
+    z-index: 1;
+    opacity: 0;
+    animation-name: glow;
+    animation-duration: 7s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+@keyframes glow {
+  40%   { opacity: 0; }
+  50%   { opacity: 1; }
+  70%   { opacity: 0; }
+}
+
 .menu {
     left: 15px;
     bottom: 15px;
-    background-color: #CCC;
+    background-color: rgba(0,0,0,0.5);
     z-index: 3;
     position: absolute;
     top: 70px;
     right: 15px;
     display: none;
+    overflow-y: auto;
+
+    button, &#main-menu a {
+        display: block;
+        margin-bottom: 30px;
+        margin-top: 0;
+
+        span {
+            font-size: 9px;
+            position: relative;
+            top: -1px;
+            text-transform: none;
+            font-family: verdana, sans-serif;
+        }
+    }
+}
+
+.menu-main {
+    bottom: 15px;
+    display: none;
+    left: 15px;
+    position: absolute;
+    right: 15px;
+    text-align: center;
+    text-shadow: 0 0 2px #000000;
+    top: 200px;
+    z-index: 3;
+    overflow: auto;
+
+    button {
+        margin-top: 0;
+    }
 }
 
 h1 {
+    font-size: 35px;
+    color: #FFFFFF;
+    margin-bottom: 20px;
     text-align: center;
     text-transform: uppercase;
-    margin-bottom: 20px;
+    font-weight: normal;
+    margin-top: 10px;
 }
 
-button {
+h2 {
+    color: #FFFFFF;
+    font-size: 20px;
+    font-weight: normal;
+    margin-top: 20px;
+    text-transform: uppercase;
+}
+
+a {
+    color: #DDDDDD;
+
+    &:hover {
+        color: #FFF;
+    }
+}
+
+button, .menu a {
+    background: url("../img/button.png") no-repeat scroll 8px 0 rgba(0, 0, 0, 0);
+    border: 0 none;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-family: "courier new",monospace,sans-serif;
+    margin: 69px auto 0;
+    padding: 13px 0 20px;
     position: relative;
-    display: block;
-    margin: 0 auto;
-    padding: 10px;
-    margin-bottom: 20px;
+    text-transform: uppercase;
+    width: 162px;
+    text-decoration: none;
+
+    &:hover {
+        text-shadow: 0 0 2px #fff;
+    }
 }
 
 #menu {
-    position: absolute;
+    background-color: #999999;
+    cursor: pointer;
     height: 40px;
-    width: 40px;
-    background-color: #999;
-    z-index: 1;
+    position: absolute;
     right: 55px;
     top: 5px;
+    width: 40px;
+    z-index: 2;
+    opacity: 0.75;
+
+    &:hover {
+        opacity: 1;
+    }
 }
 
 #sound {
-    position: absolute;
+    background-color: #999999;
     height: 40px;
-    width: 40px;
-    background-color: #999;
-    z-index: 1;
+    position: absolute;
     right: 5px;
     top: 5px;
+    width: 40px;
+    z-index: 2;
+    cursor: pointer;
+    opacity: 0.75;
+
+    &:hover {
+        opacity: 1;
+    }
+}
+
+@media (min-width: 500px){
+    .menu {
+        left: 50%;
+        margin-left: -235px;
+        right: auto;
+        width: 470px;
+    }
 }
 
 
@@ -108,22 +309,24 @@ button {
 // General interface                        //
 ////////////////////////////////////////////*/
 #fps {
-    color: #FFFFFF;
+    color: #fff;
     position: absolute;
-    z-index: 1;
+    z-index: 2;
     top: 15px;
     left: 5px;
 }
 
 #outer-hp {
-    background-color: #900;
+    background-color: #990000;
+    border: 1px solid #000000;
     height: 10px;
     left: 5px;
-    position: absolute;
-    top: 5px;
     max-width: 200px;
-    z-index: 1;
+    position: absolute;
     right: 105px;
+    top: 5px;
+    z-index: 2;
+    opacity: 0.75;
 }
 
 #inner-hp {
@@ -131,7 +334,7 @@ button {
     height: 10px;
     position: absolute;
     width: 100%;
-    z-index: 1;
+    z-index: 2;
 }
 
 
@@ -145,7 +348,7 @@ button {
     left: 0;
     right: 0;
     opacity: 0.30;
-    z-index: 1;
+    z-index: 10;
     display: none;
 
     .move {
@@ -155,7 +358,7 @@ button {
         width: 50px;
         position: absolute;
 
-        &:hover, &:active {
+        &:active {
             background-color: #fff;
         }
     }
@@ -170,7 +373,7 @@ button {
     right: 15px;
     top: 30px;
 
-    &:hover, &:active {
+    &:active {
         background-color: #fff;
     }
 }
@@ -217,29 +420,6 @@ button {
 
 
 /*////////////////////////////////////////////
-// Desktop view                             //
+// Effects                                  //
 ////////////////////////////////////////////*/
-@media (min-height: 512px){
-    #inner-wrapper {
-        margin-top: -256px;
-        top: 50%;
-        height: 512px;
-    }
-}
-
-@media (min-width: 800px){
-    #inner-wrapper {
-        left: 50%;
-        margin-left: -400px;
-        width: 800px;
-    }
-}
-
-@media (min-width: 500px){
-    .menu {
-        left: 50%;
-        margin-left: -235px;
-        right: auto;
-        width: 470px;
-    }
-}
+@import 'effects';

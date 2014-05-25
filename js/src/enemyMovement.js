@@ -312,6 +312,8 @@ function moveEnemy( enemyPos, i, dt ){
             collisionDir[3] = true;
         }
 
+
+
         // Movement
         if( ( !movementDir[0] && !movementDir[2] && !collisionDir[3] ) ){
             enemies[i].pos[0] += movement;
@@ -320,7 +322,6 @@ function moveEnemy( enemyPos, i, dt ){
             // Sprite direction
             enemies[i].sprite.pos = [enemies[i].spriteOffset, enemies[i].spriteHeight*2];
         } else{
-            enemies[i].pos[0] = enemies[i].pos[0] + 1;
             enemies[i].alternativeDir = '';
         }
     }

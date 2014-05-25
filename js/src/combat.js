@@ -25,11 +25,11 @@ function fight( enemy ){
     var idx = Math.floor(enemy.sprite._index);
     var frame = enemy.sprite.frames[idx % enemy.sprite.frames.length];
 
-    if( frame === enemy.sprite.frames.length - 2 && hitPlayer ){
-        hitPlayer = false;
+    if( frame === enemy.sprite.frames.length - 2 && enemy.hitPlayer ){
+        enemy.hitPlayer = false;
         dealDamageToPlayer( enemy );
     } else if( frame === enemy.sprite.frames.length - 3 ){
-        hitPlayer = true;
+        enemy.hitPlayer = true;
     }
 }
 
@@ -38,8 +38,12 @@ function fight( enemy ){
 // Calculate and deal damage to player      //
 //////////////////////////////////////////////
 function dealDamageToPlayer( enemy ){
+    if( sound ){
+        $.mbAudio.play('effectSprite2', 'grunt' + getRandom(1,5));
+    }
+
     player.currentHealth -= enemy.damage;
-    innerHp.style.width = (100 / player.health) * player.currentHealth + '%';
+    innerHp.style.width = (player.currentHealth / player.health) * 100 + '%';
     if( player.currentHealth <= 0 ){
         gameOver();
     }
@@ -50,6 +54,10 @@ function dealDamageToPlayer( enemy ){
 // Calculate and deal damage to enemy       //
 //////////////////////////////////////////////
 function dealDamageToEnemy( enemy, index ){
+    if( sound ){
+        $.mbAudio.play('effectSprite', 'hit' + getRandom(1, 2));
+    }
+
     enemy.currentHealth -= player.damage;
     if( enemy.currentHealth <= 0 ){
         for( var i=0; i<enemies.length; i++ ){
