@@ -22,7 +22,8 @@ Game created by **Nico Thiebes**
 * ["Free game tiles" by Daniel Cook](http://www.lostgarden.com/2006/07/more-free-game-graphics.html) ([CC BY 3.0](http://creativecommons.org/licenses/by/3.0/))
 * ["Macks tileset", REFMAP / First Seed Material](http://www.tekepon.net/fsm/modules/refmap/)
 * "Base Sheet", by Voku
-* ["Army of Darkness Defense - Miscellaneous - Fire", by Theqmayn](http://www.spriters-resource.com/mobile_phone/aoddef/sheet/45181/)
-* ["Brush Set", by PickeBu](http://pickebu.deviantart.com)
-* ["Compass Brush", by sdwhaven](http://sdwhaven.deviantart.com)
-* ["Old Paper", by mourningstocks](http://mourningstocks.deviantart.com)
+* ["Army of Darkness Defense - Miscellaneous - Fire" by Theqmayn](http://www.spriters-resource.com/mobile_phone/aoddef/sheet/45181/)
+* ["Brush Set" by PickeBu](http://pickebu.deviantart.com)
+* ["Compass Brush" by sdwhaven](http://sdwhaven.deviantart.com)
+* ["Old Paper" by mourningstocks](http://mourningstocks.deviantart.com)
+* ["jquery.mb.audio" by Matteo Bicocchi](https://github.com/pupunzi/jquery.mb.audio) ([GPL](https://github.com/pupunzi/jquery.mb.audio/blob/master/licenses/GPL-LICENSE.txt), [MIT](https://github.com/pupunzi/jquery.mb.audio/blob/master/licenses/MIT-LICENSE.txt))
