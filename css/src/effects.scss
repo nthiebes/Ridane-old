@@ -7,22 +7,10 @@
     position: absolute;
     width: 100%;
     z-index: 1;
-    opacity: 0.2;
+    opacity: 0.5;
     @include animation(fog 50s linear infinite);
 
     &.started {
-        opacity: 0.5;
-    }
-}
-
-@media (min-width: 784px){
-    #fog {
-        opacity: 0.5;
-    }
-}
-
-@media (min-height: 517px){
-    #fog {
         opacity: 0.5;
     }
 }

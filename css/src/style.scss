@@ -8,22 +8,20 @@
 // General                                  //
 ////////////////////////////////////////////*/
 *, *:before, *:after {
-    /*-moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;*/
     padding: 0;
     margin: 0;
     @include user-select( none );
 }
 
-html, body {
-    font-family: "courier new",monospace,sans-serif;
+body {
+    background: url("../img/bg.png") repeat scroll center 2px #111;
+    font-family: "courier new", monospace, sans-serif;
     overflow: hidden;
-    color: #DDD;
+    color: #FFF;
 }
 
 #outer-wrapper {
-    background: #111;
+    background: url("../img/frame.png") no-repeat scroll center -118px transparent;
     left: 0;
     position: absolute;
     right: 0;
@@ -32,10 +30,13 @@ html, body {
 }
 
 #inner-wrapper {
-    left: 0;
+    left: 50%;
+    margin-left: -392px;
+    width: 784px;
+    height: 512px;
+    top: 5px;
     position: absolute;
     right: 0;
-    top: 0;
     bottom: 0;
     overflow: hidden;
 
@@ -55,34 +56,7 @@ canvas {
     position: absolute;
 }
 
-
-/*////////////////////////////////////////////
-// Loading                                  //
-////////////////////////////////////////////*/
-@import 'loading';
-
-
-/*////////////////////////////////////////////
-// Desktop view                             //
-////////////////////////////////////////////*/
-@media (min-height: 517px){
-    body {
-        background: url("../img/bg.png") repeat scroll center 2px #111;
-    }
-
-    #outer-wrapper {
-        background: url("../img/frame.png") no-repeat scroll center -118px transparent;
-    }
-
-    #inner-wrapper {
-        height: 512px;
-        top: 5px;
-    }
-}
-
 @media (min-height: 637px){
-    
-
     body #outer-wrapper {
         background-position: center 2px;
     }
@@ -92,21 +66,15 @@ canvas {
     }
 }
 
-@media (min-width: 784px){
-    body {
-        background: url("../img/bg.png") repeat scroll center 2px #111;
-    }
-
-    #outer-wrapper {
-        background: url("../img/frame.png") no-repeat scroll center -118px transparent;
-    }
-
-    #inner-wrapper {
-        left: 50%;
-        margin-left: -392px;
-        width: 784px;
-    }
+*[title] {
+    cursor: help;
 }
+
+
+/*////////////////////////////////////////////
+// Loading                                  //
+////////////////////////////////////////////*/
+@import 'loading';
 
 
 /*////////////////////////////////////////////
@@ -176,13 +144,14 @@ canvas {
 }
 
 .menu {
-    left: 15px;
+    left: 50%;
+    margin-left: -235px;
+    width: 470px;
     bottom: 15px;
     background-color: rgba(0,0,0,0.5);
     z-index: 3;
     position: absolute;
     top: 70px;
-    right: 15px;
     display: none;
     overflow-y: auto;
 
@@ -199,22 +168,26 @@ canvas {
             font-family: verdana, sans-serif;
         }
     }
+
+    > span {
+        margin-left: 105px
+    }
 }
 
 .menu-main {
     bottom: 15px;
     display: none;
-    left: 15px;
+    left: 50%;
+    margin-left: -130px;
     position: absolute;
-    right: 15px;
-    text-align: center;
     text-shadow: 0 0 2px #000000;
     top: 200px;
+    width: 260px;
     z-index: 3;
-    overflow: auto;
 
     button {
-        margin-top: 0;
+        display: block;
+        margin: 0 auto 30px;
     }
 }
 
@@ -295,15 +268,6 @@ button, .menu a {
     }
 }
 
-@media (min-width: 500px){
-    .menu {
-        left: 50%;
-        margin-left: -235px;
-        right: auto;
-        width: 470px;
-    }
-}
-
 
 /*////////////////////////////////////////////
 // General interface                        //
@@ -314,11 +278,12 @@ button, .menu a {
     z-index: 2;
     top: 15px;
     left: 5px;
+    display: none;
 }
 
 #outer-hp {
-    background-color: #990000;
-    border: 1px solid #000000;
+    background-color: rgba(200, 0, 0, 0.75);
+    border: 1px solid #000;
     height: 10px;
     left: 5px;
     max-width: 200px;
@@ -327,95 +292,107 @@ button, .menu a {
     top: 5px;
     z-index: 2;
     opacity: 0.75;
+
+    &:hover #inner-hp {
+        color: #FFF;
+    }
 }
 
 #inner-hp {
     background-color: #090;
+    font-size: 11px;
     height: 10px;
     position: absolute;
     width: 100%;
     z-index: 2;
+    line-height: 9px;
+    text-align: center;
+    color: rgba(255, 255, 255, 0);
 }
 
-
-/*////////////////////////////////////////////
-// Mobile interface                         //
-////////////////////////////////////////////*/
-#mobile-controls {
+#outer-mana {
+    background-color: rgba(255, 255, 255, 0.75);
+    border: 1px solid #000;
+    height: 10px;
+    left: 5px;
+    max-width: 200px;
     position: absolute;
-    bottom: 0;
-    height: 165px;
-    left: 0;
-    right: 0;
-    opacity: 0.30;
-    z-index: 10;
+    right: 105px;
+    top: 22px;
+    z-index: 2;
+    opacity: 0.75;
     display: none;
 
-    .move {
-        background-color: #999999;
-        border: 1px solid #000000;
-        height: 50px;
-        width: 50px;
-        position: absolute;
-
-        &:active {
-            background-color: #fff;
-        }
+    &:hover #inner-mana {
+        color: #FFF;
     }
 }
 
-#fight {
-    background-color: #999999;
-    border: 1px solid #000000;
-    height: 100px;
-    width: 100px;
+#inner-mana {
+    background-color: #009;
+    font-size: 11px;
+    height: 10px;
     position: absolute;
-    right: 15px;
-    top: 30px;
+    width: 100%;
+    z-index: 2;
+    line-height: 9px;
+    text-align: center;
+    color: rgba(255, 255, 255, 0);
+}
 
-    &:active {
-        background-color: #fff;
+#outer-stamina {
+    background-color: rgba(0, 0, 0, 0.50);
+    border: 1px solid #000;
+    height: 10px;
+    left: 5px;
+    max-width: 200px;
+    position: absolute;
+    right: 105px;
+    top: 22px;
+    z-index: 2;
+    opacity: 0.75;
+    display: none;
+
+    &:hover #inner-stamina {
+        color: #000;
     }
 }
 
-#top {
-    left: 65px;
-    top: 0px;
+#inner-stamina {
+    background-color: #cc0;
+    font-size: 11px;
+    height: 10px;
+    position: absolute;
+    width: 100%;
+    z-index: 2;
+    line-height: 9px;
+    text-align: center;
+    color: rgba(255, 255, 255, 0);
 }
 
-#top-right {
-    left: 115px;
-    top: 0px;
+.skill {
+    background-color: rgba(0, 0, 0, 0.2);
+    border: 1px solid #000000;
+    color: #FFFFFF;
+    font-size: 11px;
+    height: 40px;
+    position: absolute;
+    top: 5px;
+    width: 40px;
+    z-index: 2;
+    line-height: 11px;
 }
 
-#right {
-    left: 115px;
-    top: 50px;
+#skill1 {
+    left: 222px;
 }
 
-#bottom-right {
-    left: 115px;
-    top: 100px;
+#skill2 {
+    left: 269px;
 }
 
-#bottom {
-    left: 65px;
-    top: 100px;
-}
-
-#bottom-left {
-    left: 15px;
-    top: 100px;
-}
-
-#left {
-    left: 15px;
-    top: 50px;
-}
-
-#top-left {
-    left: 15px;
-    top: 0px;
+#skill3 {
+    left: 316px;
 }
 
 
@@ -423,3 +400,9 @@ button, .menu a {
 // Effects                                  //
 ////////////////////////////////////////////*/
 @import 'effects';
+
+
+/*////////////////////////////////////////////
+// Keys                                     //
+////////////////////////////////////////////*/
+@import 'keys';

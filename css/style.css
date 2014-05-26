@@ -1,7 +1,5 @@
+@charset "CP850";
 *, *:before, *:after {
-  /*-moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;*/
   padding: 0;
   margin: 0;
   -moz-user-select: -moz- none;
@@ -11,13 +9,14 @@
   -moz-user-select: none;
   -ms-user-select: none; }
 
-html, body {
-  font-family: "courier new",monospace,sans-serif;
+body {
+  background: url("../img/bg.png") repeat scroll center 2px #111111;
+  font-family: "courier new", monospace, sans-serif;
   overflow: hidden;
-  color: #DDD; }
+  color: #FFF; }
 
 #outer-wrapper {
-  background: #111;
+  background: url("../img/frame.png") no-repeat scroll center -118px transparent;
   left: 0;
   position: absolute;
   right: 0;
@@ -25,10 +24,13 @@ html, body {
   bottom: 0; }
 
 #inner-wrapper {
-  left: 0;
+  left: 50%;
+  margin-left: -392px;
+  width: 784px;
+  height: 512px;
+  top: 5px;
   position: absolute;
   right: 0;
-  top: 0;
   bottom: 0;
   overflow: hidden; }
   #inner-wrapper.play canvas {
@@ -45,6 +47,15 @@ canvas {
   display: block;
   opacity: 0;
   position: absolute; }
+
+@media (min-height: 637px) {
+  body #outer-wrapper {
+    background-position: center 2px; }
+
+  #inner-wrapper {
+    top: 125px; } }
+*[title] {
+  cursor: help; }
 
 #loading {
   background-color: #111111;
@@ -424,33 +435,6 @@ canvas {
     opacity: 0;
     transform: rotate(900deg); } }
 
-@media (min-height: 517px) {
-  body {
-    background: url("../img/bg.png") repeat scroll center 2px #111111; }
-
-  #outer-wrapper {
-    background: url("../img/frame.png") no-repeat scroll center -118px transparent; }
-
-  #inner-wrapper {
-    height: 512px;
-    top: 5px; } }
-@media (min-height: 637px) {
-  body #outer-wrapper {
-    background-position: center 2px; }
-
-  #inner-wrapper {
-    top: 125px; } }
-@media (min-width: 784px) {
-  body {
-    background: url("../img/bg.png") repeat scroll center 2px #111111; }
-
-  #outer-wrapper {
-    background: url("../img/frame.png") no-repeat scroll center -118px transparent; }
-
-  #inner-wrapper {
-    left: 50%;
-    margin-left: -392px;
-    width: 784px; } }
 #overlay {
   background-color: #000;
   opacity: 0.5;
@@ -512,13 +496,14 @@ canvas {
     opacity: 0; } }
 
 .menu {
-  left: 15px;
+  left: 50%;
+  margin-left: -235px;
+  width: 470px;
   bottom: 15px;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 3;
   position: absolute;
   top: 70px;
-  right: 15px;
   display: none;
   overflow-y: auto; }
   .menu button, .menu#main-menu a {
@@ -531,20 +516,22 @@ canvas {
       top: -1px;
       text-transform: none;
       font-family: verdana, sans-serif; }
+  .menu > span {
+    margin-left: 105px; }
 
 .menu-main {
   bottom: 15px;
   display: none;
-  left: 15px;
+  left: 50%;
+  margin-left: -130px;
   position: absolute;
-  right: 15px;
-  text-align: center;
   text-shadow: 0 0 2px #000000;
   top: 200px;
-  z-index: 3;
-  overflow: auto; }
+  width: 260px;
+  z-index: 3; }
   .menu-main button {
-    margin-top: 0; }
+    display: block;
+    margin: 0 auto 30px; }
 
 h1 {
   font-size: 35px;
@@ -609,22 +596,17 @@ button, .menu a {
   #sound:hover {
     opacity: 1; }
 
-@media (min-width: 500px) {
-  .menu {
-    left: 50%;
-    margin-left: -235px;
-    right: auto;
-    width: 470px; } }
 #fps {
   color: #fff;
   position: absolute;
   z-index: 2;
   top: 15px;
-  left: 5px; }
+  left: 5px;
+  display: none; }
 
 #outer-hp {
-  background-color: #990000;
-  border: 1px solid #000000;
+  background-color: rgba(200, 0, 0, 0.75);
+  border: 1px solid #000;
   height: 10px;
   left: 5px;
   max-width: 200px;
@@ -633,74 +615,92 @@ button, .menu a {
   top: 5px;
   z-index: 2;
   opacity: 0.75; }
+  #outer-hp:hover #inner-hp {
+    color: #FFF; }
 
 #inner-hp {
   background-color: #090;
+  font-size: 11px;
   height: 10px;
   position: absolute;
   width: 100%;
-  z-index: 2; }
+  z-index: 2;
+  line-height: 9px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0); }
 
-#mobile-controls {
+#outer-mana {
+  background-color: rgba(255, 255, 255, 0.75);
+  border: 1px solid #000;
+  height: 10px;
+  left: 5px;
+  max-width: 200px;
   position: absolute;
-  bottom: 0;
-  height: 165px;
-  left: 0;
-  right: 0;
-  opacity: 0.30;
-  z-index: 10;
+  right: 105px;
+  top: 22px;
+  z-index: 2;
+  opacity: 0.75;
   display: none; }
-  #mobile-controls .move {
-    background-color: #999999;
-    border: 1px solid #000000;
-    height: 50px;
-    width: 50px;
-    position: absolute; }
-    #mobile-controls .move:active {
-      background-color: #fff; }
+  #outer-mana:hover #inner-mana {
+    color: #FFF; }
 
-#fight {
-  background-color: #999999;
-  border: 1px solid #000000;
-  height: 100px;
-  width: 100px;
+#inner-mana {
+  background-color: #009;
+  font-size: 11px;
+  height: 10px;
   position: absolute;
-  right: 15px;
-  top: 30px; }
-  #fight:active {
-    background-color: #fff; }
+  width: 100%;
+  z-index: 2;
+  line-height: 9px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0); }
 
-#top {
-  left: 65px;
-  top: 0px; }
+#outer-stamina {
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 1px solid #000;
+  height: 10px;
+  left: 5px;
+  max-width: 200px;
+  position: absolute;
+  right: 105px;
+  top: 22px;
+  z-index: 2;
+  opacity: 0.75;
+  display: none; }
+  #outer-stamina:hover #inner-stamina {
+    color: #000; }
 
-#top-right {
-  left: 115px;
-  top: 0px; }
+#inner-stamina {
+  background-color: #cc0;
+  font-size: 11px;
+  height: 10px;
+  position: absolute;
+  width: 100%;
+  z-index: 2;
+  line-height: 9px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0); }
 
-#right {
-  left: 115px;
-  top: 50px; }
+.skill {
+  background-color: rgba(0, 0, 0, 0.2);
+  border: 1px solid #000000;
+  color: #FFFFFF;
+  font-size: 11px;
+  height: 40px;
+  position: absolute;
+  top: 5px;
+  width: 40px;
+  z-index: 2;
+  line-height: 11px; }
 
-#bottom-right {
-  left: 115px;
-  top: 100px; }
+#skill1 {
+  left: 222px; }
 
-#bottom {
-  left: 65px;
-  top: 100px; }
+#skill2 {
+  left: 269px; }
 
-#bottom-left {
-  left: 15px;
-  top: 100px; }
-
-#left {
-  left: 15px;
-  top: 50px; }
-
-#top-left {
-  left: 15px;
-  top: 0px; }
+#skill3 {
+  left: 316px; }
 
 #fog {
   background: url("../img/fog.png") repeat-x scroll 0 0 transparent;
@@ -708,7 +708,7 @@ button, .menu a {
   position: absolute;
   width: 100%;
   z-index: 1;
-  opacity: 0.2;
+  opacity: 0.5;
   -webkit-animation: fog 50s linear infinite;
   -moz-animation: fog 50s linear infinite;
   -ms-animation: fog 50s linear infinite;
@@ -717,12 +717,6 @@ button, .menu a {
   #fog.started {
     opacity: 0.5; }
 
-@media (min-width: 784px) {
-  #fog {
-    opacity: 0.5; } }
-@media (min-height: 517px) {
-  #fog {
-    opacity: 0.5; } }
 @-moz-keyframes fog {
   0% {
     background-position: 0 0; }
@@ -946,3 +940,37 @@ button, .menu a {
 
   100% {
     opacity: 0; } }
+
+/**
+* KEYS.css
+*
+* A simple stylesheet for rendering beautiful keyboard-style elements.
+*
+* Author: Michael Hüneburg
+* Website: http://michaelhue.com/keyscss
+* License: MIT License
+*/
+kbd {
+  display: inline;
+  display: inline-block;
+  min-width: 1em;
+  padding: .2em .3em;
+  font: normal .85em/1 "Lucida Grande", Lucida, Arial, sans-serif;
+  text-align: center;
+  text-decoration: none;
+  -webkit-border-radius: 0.3em;
+  -moz-border-radius: 0.3em;
+  -ms-border-radius: 0.3em;
+  -o-border-radius: 0.3em;
+  border-radius: 0.3em;
+  border: none;
+  cursor: default;
+  margin-bottom: 15px;
+  background: #fafafa;
+  background: -moz-linear-gradient(top, #d2d2d2, white);
+  background: -webkit-gradient(linear, left top, left bottom, from(#d2d2d2), to(white));
+  color: #323232;
+  text-shadow: 0 0 2px white;
+  -moz-box-shadow: inset 0 0 1px white, inset 0 0 0.4em #c8c8c8, 0 0.1em 0 #828282, 0 0.11em 0 rgba(0, 0, 0, 0.4), 0 0.1em 0.11em rgba(0, 0, 0, 0.9);
+  -webkit-box-shadow: inset 0 0 1px white, inset 0 0 0.4em #c8c8c8, 0 0.1em 0 #828282, 0 0.11em 0 rgba(0, 0, 0, 0.4), 0 0.1em 0.11em rgba(0, 0, 0, 0.9);
+  box-shadow: inset 0 0 1px white, inset 0 0 0.4em #c8c8c8, 0 0.1em 0 #828282, 0 0.11em 0 rgba(0, 0, 0, 0.4), 0 0.1em 0.11em rgba(0, 0, 0, 0.9); }

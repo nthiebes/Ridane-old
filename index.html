@@ -17,8 +17,20 @@
 		<div id="inner-wrapper">
 			<div id="game-interface">
 				<div id="outer-hp">
-					<div id="inner-hp"></div>
+					<div id="inner-hp">Health</div>
 				</div>
+
+				<div id="outer-mana">
+					<div id="inner-mana">Mana</div>
+				</div>
+
+				<div id="outer-stamina">
+					<div id="inner-stamina">Stamina</div>
+				</div>
+
+				<div class="skill" id="skill1" title="Skill 1">1</div>
+				<div class="skill" id="skill2" title="Skill 2">2</div>
+				<div class="skill" id="skill3" title="Skill 3">3</div>
 
 				<div id="fps"></div>
 
@@ -59,29 +71,31 @@
 			<div class="menu" id="level-complete-menu">
 				<h1>Level Completed!</h1>
 				<button id="next-level-button">Next Level</button>
-				<button id="help-button">Help</button>
+				<button class="help-button">Help</button>
 				<button class="main-menu-button">Main Menu</button>
 			</div>
 
 			<div class="menu" id="help-menu">
 				<h1>Help</h1>
-				<button id="back-button">&#60; Back</button>
+				<button class="back-button">&#60; Back</button>
+				<span>Move: <kbd>LEFT</kbd> <kbd>RIGHT</kbd> <kbd>UP</kbd> <kbd>DOWN</kbd></span>
+				<br>
+				<span>Attack: <kbd>SPACE</kbd></span>
+				<br>
+				<span>Block/Aim/Focus: <kbd title="Command">CMD</kbd></span>
+				<br>
+				<span>Skills: <kbd>1</kbd> <kbd>2</kbd> <kbd>3</kbd></span>
 			</div>
 
 			<div class="menu-main" id="help-menu-main">
 				<button id="back-button-help">&#60; Back</button>
-			</div>
-
-			<div id="mobile-controls">
-				<div class="move" id="top"></div>
-				<div class="move" id="top-right"></div>
-				<div class="move" id="right"></div>
-				<div class="move" id="bottom-right"></div>
-				<div class="move" id="bottom"></div>
-				<div class="move" id="bottom-left"></div>
-				<div class="move" id="left"></div>
-				<div class="move" id="top-left"></div>
-				<div id="fight"></div>
+				Move: <kbd>LEFT</kbd> <kbd>RIGHT</kbd> <kbd>UP</kbd> <kbd>DOWN</kbd>
+				<br>
+				Attack: <kbd>SPACE</kbd>
+				<br>
+				Block/Aim/Focus: <kbd title="Command">CMD</kbd>
+				<br>
+				Skills: <kbd>1</kbd> <kbd>2</kbd> <kbd>3</kbd>
 			</div>
 
 			<div id="loading">

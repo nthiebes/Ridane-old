@@ -36,56 +36,6 @@
         pressedKeys = {};
     });
 
-    // Mobile controls touchevents
-    document.getElementById('fight').addEventListener('touchstart', function(){
-        setKey({keyCode: 32}, true);
-    }, false);
-
-    document.getElementById('top').addEventListener('touchstart', function(){
-        setKey({keyCode: 38}, true);
-    }, false);
-
-    document.getElementById('top-right').addEventListener('touchstart', function(){
-        setKey({keyCode: 38}, true);
-        setKey({keyCode: 39}, true);
-    }, false);
-
-    document.getElementById('right').addEventListener('touchstart', function(){
-        setKey({keyCode: 39}, true);
-    }, false);
-
-    document.getElementById('bottom-right').addEventListener('touchstart', function(){
-        setKey({keyCode: 39}, true);
-        setKey({keyCode: 40}, true);
-    }, false);
-
-    document.getElementById('bottom').addEventListener('touchstart', function(){
-        setKey({keyCode: 40}, true);
-    }, false);
-
-    document.getElementById('bottom-left').addEventListener('touchstart', function(){
-        setKey({keyCode: 37}, true);
-        setKey({keyCode: 40}, true);
-    }, false);
-
-    document.getElementById('left').addEventListener('touchstart', function(){
-        setKey({keyCode: 37}, true);
-    }, false);
-
-    document.getElementById('top-left').addEventListener('touchstart', function(){
-        setKey({keyCode: 37}, true);
-        setKey({keyCode: 38}, true);
-    }, false);
-
-    // Reset input on touchend
-    document.getElementsByTagName('body')[0].addEventListener('touchend', function(){
-        setKey({keyCode: 32}, false);
-        setKey({keyCode: 37}, false);
-        setKey({keyCode: 38}, false);
-        setKey({keyCode: 39}, false);
-        setKey({keyCode: 40}, false);
-    }, false);
-
     window.input = {
         isDown: function(key) {
             return pressedKeys[key.toUpperCase()];
