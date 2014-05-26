@@ -2,6 +2,7 @@
 *, *:before, *:after {
   padding: 0;
   margin: 0;
+  outline: none;
   -moz-user-select: -moz- none;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -13,7 +14,8 @@ body {
   background: url("../img/bg.png") repeat scroll center 2px #111111;
   font-family: "courier new", monospace, sans-serif;
   overflow: hidden;
-  color: #FFF; }
+  color: #FFF;
+  cursor: default; }
 
 #outer-wrapper {
   background: url("../img/frame.png") no-repeat scroll center -118px transparent;
@@ -523,11 +525,11 @@ canvas {
   bottom: 15px;
   display: none;
   left: 50%;
-  margin-left: -130px;
+  margin-left: -132px;
   position: absolute;
   text-shadow: 0 0 2px #000000;
   top: 200px;
-  width: 260px;
+  width: 264px;
   z-index: 3; }
   .menu-main button {
     display: block;
