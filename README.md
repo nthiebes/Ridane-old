@@ -26,4 +26,7 @@ Game created by **Nico Thiebes**
 * ["Brush Set" by PickeBu](http://pickebu.deviantart.com)
 * ["Compass Brush" by sdwhaven](http://sdwhaven.deviantart.com)
 * ["Old Paper" by mourningstocks](http://mourningstocks.deviantart.com)
+
+#####Miscellaneous
 * ["jquery.mb.audio" by Matteo Bicocchi](https://github.com/pupunzi/jquery.mb.audio) ([GPL](https://github.com/pupunzi/jquery.mb.audio/blob/master/licenses/GPL-LICENSE.txt), [MIT](https://github.com/pupunzi/jquery.mb.audio/blob/master/licenses/MIT-LICENSE.txt))
+* ["KEYS.css" by Michael Hüneburg](https://github.com/michaelhue/keyscss) ([MIT](https://github.com/michaelhue/keyscss/blob/master/LICENSE.txt))
