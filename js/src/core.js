@@ -29,6 +29,7 @@ var gameWidth = document.getElementById('inner-wrapper').offsetWidth;
 var gameHeight = document.getElementById('inner-wrapper').offsetHeight;
 var innerHp = document.getElementById('inner-hp');
 var rain = document.getElementById('rain');
+var soundElement = document.getElementById('sound');
 var moveRight = false;
 var fpsELement = document.getElementById('fps');
 var leftElement = document.getElementById('left');
@@ -1006,16 +1007,19 @@ function eventHandlers(){
     }
 
     // Activate sound button
-    document.getElementById('sound').addEventListener('click', function(){
+    soundElement.addEventListener('click', function(){
         if( !sound && !soundStarted ){
             $(document).trigger('initAudio');
             sound = true;
+            soundElement.className = 'enabled';
         } else if( !sound && soundStarted ){
             $.mbAudio.unMuteAllSounds();
             sound = true;
+            soundElement.className = 'enabled';
         } else if( sound ){
             $.mbAudio.muteAllSounds();
             sound = false;
+            soundElement.className = 'muted';
         }
     });
     $(document).on("initAudio", function (){
