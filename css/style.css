@@ -59,6 +59,10 @@ canvas {
 *[title] {
   cursor: help; }
 
+*[disabled] {
+  opacity: 0.2;
+  cursor: default; }
+
 #loading {
   background-color: #111111;
   height: 100%;
@@ -140,18 +144,18 @@ canvas {
     opacity: 1.0; } }
 
 .windows8 {
-  height: 200px;
+  height: 150px;
   left: 50%;
-  margin-left: -100px;
-  margin-top: -100px;
+  margin-left: -75px;
+  margin-top: -85px;
   position: absolute;
   top: 50%;
-  width: 200px; }
+  width: 150px; }
 
 .windows8 .wBall {
   position: absolute;
-  width: 200px;
-  height: 200px;
+  width: 150px;
+  height: 150px;
   opacity: 0;
   -moz-transform: rotate(225deg);
   -moz-animation: orbit 5.5s infinite;
@@ -459,10 +463,16 @@ canvas {
   left: 0;
   margin: 0;
   right: 0;
-  top: 200px;
+  top: 220px;
   width: auto;
   display: block;
-  text-align: center; }
+  text-align: center;
+  border: 0 none; }
+  #main-menu button, #main-menu .button {
+    background-color: rgba(0, 0, 0, 0.35);
+    border: 3px solid rgba(0, 0, 0, 0.65); }
+    #main-menu button:hover, #main-menu .button:hover {
+      background-color: rgba(0, 0, 0, 0.65); }
 
 #ridane {
   background: url("../img/ridane.png") no-repeat scroll 0 0 transparent;
@@ -473,33 +483,29 @@ canvas {
   width: 558px;
   z-index: 1; }
 
-#ridane-glow {
-  background: url("../img/ridane-glow.png") no-repeat scroll 0 0 transparent;
-  height: 215px;
-  left: 119px;
-  position: absolute;
-  top: -27px;
-  width: 558px;
-  z-index: 1;
-  opacity: 0;
-  animation-name: glow;
-  animation-duration: 7s;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear; }
+/*#ridane-glow {
+    background: url("../img/ridane-glow.png") no-repeat scroll 0 0 transparent;
+    height: 215px;
+    left: 119px;
+    position: absolute;
+    top: -27px;
+    width: 558px;
+    z-index: 1;
+    opacity: 0;
+    animation-name: glow;
+    animation-duration: 7s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
 
 @keyframes glow {
-  40% {
-    opacity: 0; }
-
-  50% {
-    opacity: 1; }
-
-  70% {
-    opacity: 0; } }
-
+  40%   { opacity: 0; }
+  50%   { opacity: 1; }
+  70%   { opacity: 0; }
+}*/
 .menu {
   left: 50%;
-  margin-left: -235px;
+  margin-left: -237px;
   width: 470px;
   bottom: 15px;
   background-color: rgba(0, 0, 0, 0.5);
@@ -507,12 +513,13 @@ canvas {
   position: absolute;
   top: 70px;
   display: none;
-  overflow-y: auto; }
-  .menu button, .menu#main-menu a {
+  overflow-y: auto;
+  border: 5px solid #000000; }
+  .menu button, .menu#main-menu .button {
     display: block;
     margin-bottom: 30px;
     margin-top: 0; }
-    .menu button span, .menu#main-menu a span {
+    .menu button span, .menu#main-menu .button span {
       font-size: 9px;
       position: relative;
       top: -1px;
@@ -520,6 +527,9 @@ canvas {
       font-family: verdana, sans-serif; }
   .menu > span {
     margin-left: 105px; }
+  .menu p {
+    margin: 20px 10px;
+    text-align: center; }
 
 .menu-main {
   bottom: 15px;
@@ -528,12 +538,16 @@ canvas {
   margin-left: -132px;
   position: absolute;
   text-shadow: 0 0 2px #000000;
-  top: 200px;
+  top: 220px;
   width: 264px;
   z-index: 3; }
   .menu-main button {
     display: block;
-    margin: 0 auto 30px; }
+    margin: 0 auto 30px;
+    background-color: rgba(0, 0, 0, 0.35);
+    border: 3px solid rgba(0, 0, 0, 0.65); }
+    .menu-main button:hover {
+      background-color: rgba(0, 0, 0, 0.65); }
 
 h1 {
   font-size: 35px;
@@ -556,21 +570,22 @@ a {
   a:hover {
     color: #FFF; }
 
-button, .menu a {
-  background: url("../img/button.png") no-repeat scroll 8px 0 rgba(0, 0, 0, 0);
-  border: 0 none;
+button, .menu .button {
   color: #FFFFFF;
   cursor: pointer;
   display: inline-block;
   font-family: "courier new",monospace,sans-serif;
   margin: 69px auto 0;
-  padding: 13px 0 20px;
+  padding: 10px 0;
   position: relative;
   text-transform: uppercase;
   width: 162px;
-  text-decoration: none; }
-  button:hover, .menu a:hover {
-    text-shadow: 0 0 2px #fff; }
+  text-decoration: none;
+  font-size: 17px;
+  background-color: rgba(255, 255, 255, 0.35);
+  border: 3px solid rgba(255, 255, 255, 0.65); }
+  button:hover, .menu .button:hover {
+    background-color: rgba(255, 255, 255, 0.65); }
 
 #menu {
   cursor: pointer;
@@ -591,7 +606,7 @@ button, .menu a {
   #menu .demoSpan1 {
     width: 35px;
     height: 34px;
-    border: 2px solid #ccc;
+    border: 2px solid #000;
     border-radius: 3px;
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px; }
@@ -599,14 +614,14 @@ button, .menu a {
     content: '';
     height: 3px;
     width: 25px;
-    background: #ccc;
+    background: #000;
     display: block;
     position: absolute;
     top: 5px;
     left: 5px;
-    box-shadow: 0 10px 0 #ccc, 0 20px 0 #ccc;
-    -webkit-box-shadow: 0 10px 0 #ccc, 0 20px 0 #ccc;
-    -moz-box-shadow: 0 10px 0 #ccc, 0 20px 0 #ccc; }
+    box-shadow: 0 10px 0 #000, 0 20px 0 #000;
+    -webkit-box-shadow: 0 10px 0 #000, 0 20px 0 #000;
+    -moz-box-shadow: 0 10px 0 #000, 0 20px 0 #000; }
 
 #sound {
   height: 40px;
@@ -631,7 +646,7 @@ button, .menu a {
     height: 16px;
     width: 12px;
     display: block;
-    background: #ccc;
+    background: #000;
     position: absolute;
     top: 12px;
     left: 6px; }
@@ -642,7 +657,7 @@ button, .menu a {
     display: block;
     border: 10px transparent solid;
     border-left-width: 0;
-    border-right-color: #ccc;
+    border-right-color: #000;
     position: absolute;
     top: 2px;
     left: 16px; }
@@ -655,7 +670,7 @@ button, .menu a {
     height: 44px;
     width: 44px;
     display: block;
-    border: 2px solid #ccc;
+    border: 2px solid #000;
     border-radius: 40px;
     -webkit-border-radius: 40px;
     -moz-border-radius: 40px;
@@ -667,7 +682,7 @@ button, .menu a {
     height: 46px;
     width: 2px;
     display: block;
-    background: #ccc;
+    background: #000;
     position: absolute;
     top: 0px;
     left: 20px;
@@ -688,7 +703,7 @@ button, .menu a {
     height: 16px;
     width: 12px;
     display: block;
-    background: #ccc;
+    background: #000;
     position: absolute;
     top: 12px;
     left: 0px; }
@@ -699,7 +714,7 @@ button, .menu a {
     display: block;
     border: 10px transparent solid;
     border-left-width: 0;
-    border-right-color: #ccc;
+    border-right-color: #000;
     position: absolute;
     top: 2px;
     left: 12px; }
@@ -713,7 +728,7 @@ button, .menu a {
     width: 40px;
     display: block;
     border: 4px solid transparent;
-    border-right: 4px solid #ccc;
+    border-right: 4px solid #000;
     border-radius: 40px;
     -webkit-border-radius: 40px;
     -moz-border-radius: 40px;
@@ -726,7 +741,7 @@ button, .menu a {
     width: 30px;
     display: block;
     border: 4px solid transparent;
-    border-right: 4px solid #ccc;
+    border-right: 4px solid #000;
     border-radius: 20px;
     -webkit-border-radius: 20px;
     -moz-border-radius: 20px;
@@ -803,8 +818,7 @@ button, .menu a {
   right: 105px;
   top: 22px;
   z-index: 2;
-  opacity: 0.75;
-  display: none; }
+  opacity: 0.75; }
   #outer-stamina:hover #inner-stamina {
     color: #000; }
 

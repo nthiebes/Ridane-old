@@ -3,6 +3,7 @@
 //////////////////////////////////////////////
 var enemyAttr = {
 	nudeGuy: {
+		type: 'melee',
 		aggroRange: 200,
 		health: 50,
 		damage: 10,
@@ -15,6 +16,7 @@ var enemyAttr = {
 	},
 
 	zombie: {
+		type: 'melee',
 		aggroRange: 200,
 		health: 50,
 		damage: 10,

@@ -3,9 +3,10 @@
 //////////////////////////////////////////////
 var playerAttr = {
 	nudeGuy: {
+		type: 'melee',
 		health: 75,
 		healthGeneration: 5,
-		damage: 10,
+		damage: 10, // 10
 		spriteOffset: 0,
 	    spriteHeight: 46,
 	    hitbox: [61, 27],
@@ -14,6 +15,7 @@ var playerAttr = {
 	},
 
 	zombie: {
+		type: 'melee',
 		health: 100,
 		healthGeneration: 5,
 		damage: 10,

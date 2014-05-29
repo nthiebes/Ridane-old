@@ -41,6 +41,12 @@ function moveEnemy( enemyPos, i, dt ){
             collisionDir[1] = true;
         }
 
+        // Map border
+        if( enemyX + enemies[i].hitbox[0] < 0 ){
+            enemyCollision = true;
+            collisionDir[1] = true;
+        }
+
         if( !enemyCollision ){
             enemies[i].pos[0] -= movement;
             movementDir[1] = true;
@@ -74,6 +80,12 @@ function moveEnemy( enemyPos, i, dt ){
 
         // Player collision
         if( boxCollides(playerPos, [player.hitbox[1], player.spriteHeight], [ enemyX + movement + enemies[i].hitbox[0], enemyY ], enemySize) ){
+            enemyCollision = true;
+            collisionDir[3] = true;
+        }
+
+        // Map border
+        if( enemyX + enemies[i].hitbox[0] > gameWidth - enemies[i].hitbox[1] ){
             enemyCollision = true;
             collisionDir[3] = true;
         }
@@ -115,6 +127,12 @@ function moveEnemy( enemyPos, i, dt ){
             collisionDir[2] = true;
         }
 
+        // Map border
+        if( enemyY < 0 ){
+            enemyCollision = true;
+            collisionDir[2] = true;
+        }
+
         if( !enemyCollision ){
             enemies[i].pos[1] -= movement;
             movementDir[2] = true;
@@ -152,6 +170,12 @@ function moveEnemy( enemyPos, i, dt ){
 
         // Player collision
         if( boxCollides(playerPos, [player.hitbox[1], player.spriteHeight + 1], [ enemyX + enemies[i].hitbox[0], enemyY + movement ], enemySize) ){
+            enemyCollision = true;
+            collisionDir[0] = true;
+        }
+
+        // Map border
+        if( enemyY > gameHeight - enemies[i].sprite.size[1] ){
             enemyCollision = true;
             collisionDir[0] = true;
         }
@@ -312,7 +336,10 @@ function moveEnemy( enemyPos, i, dt ){
             collisionDir[3] = true;
         }
 
-
+        // Map border
+        if( enemyX + enemies[i].hitbox[0] > gameWidth - enemies[i].hitbox[1] ){
+            collisionDir[3] = true;
+        }
 
         // Movement
         if( ( !movementDir[0] && !movementDir[2] && !collisionDir[3] ) ){
@@ -348,6 +375,11 @@ function moveEnemy( enemyPos, i, dt ){
         if( boxCollides(playerPos, [player.hitbox[1] + 1, player.spriteHeight], [ enemyX - movement + enemies[i].hitbox[0], enemyY ], enemySize) ){
             collisionDir[1] = true;
         }
+
+        // Map border
+        if( enemyX + enemies[i].hitbox[0] < 0 ){
+            collisionDir[1] = true;
+        }
         
         // Movement
         if( ( !movementDir[0] && !movementDir[2] && !collisionDir[1] ) ){
@@ -381,6 +413,11 @@ function moveEnemy( enemyPos, i, dt ){
 
         // Player collision
         if( boxCollides(playerPos, [player.hitbox[1], player.spriteHeight + 1], [ enemyX + enemies[i].hitbox[0], enemyY - movement ], enemySize) ){
+            collisionDir[2] = true;
+        }
+
+        // Map border
+        if( enemyY < 0 ){
             collisionDir[2] = true;
         }
 
@@ -423,6 +460,11 @@ function moveEnemy( enemyPos, i, dt ){
             collisionDir[0] = true;
         }
 
+        // Map border
+        if( enemyY > gameHeight - enemies[i].sprite.size[1] ){
+            collisionDir[0] = true;
+        }
+
         // Movement
         if( !movementDir[1] && !movementDir[3] && !collisionDir[0] ){
             enemies[i].pos[1] += movement;
@@ -462,7 +504,6 @@ function moveEnemy( enemyPos, i, dt ){
         enemies[i].sprite.speed = enemies[i].walkAnimationSpeed;
         enemies[i].sprite.inProgress = false;
         enemies[i].attacking = false;
-        playerInFight = false;
     }
 
     // Reset

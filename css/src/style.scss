@@ -72,6 +72,11 @@ canvas {
     cursor: help;
 }
 
+*[disabled] {
+    opacity: 0.2;
+    cursor: default;
+}
+
 
 /*////////////////////////////////////////////
 // Loading                                  //
@@ -108,10 +113,20 @@ canvas {
     left: 0;
     margin: 0;
     right: 0;
-    top: 200px;
+    top: 220px;
     width: auto;
     display: block;
     text-align: center;
+    border: 0 none;
+
+    button, .button {
+        background-color: rgba(0, 0, 0, 0.35);
+        border: 3px solid rgba(0, 0, 0, 0.65);
+
+        &:hover {
+            background-color: rgba(0, 0, 0, 0.65);
+        }
+    }
 }
 
 #ridane {
@@ -124,7 +139,7 @@ canvas {
     z-index: 1;
 }
 
-#ridane-glow {
+/*#ridane-glow {
     background: url("../img/ridane-glow.png") no-repeat scroll 0 0 transparent;
     height: 215px;
     left: 119px;
@@ -143,11 +158,11 @@ canvas {
   40%   { opacity: 0; }
   50%   { opacity: 1; }
   70%   { opacity: 0; }
-}
+}*/
 
 .menu {
     left: 50%;
-    margin-left: -235px;
+    margin-left: -237px;
     width: 470px;
     bottom: 15px;
     background-color: rgba(0,0,0,0.5);
@@ -156,8 +171,9 @@ canvas {
     top: 70px;
     display: none;
     overflow-y: auto;
+    border: 5px solid #000000;
 
-    button, &#main-menu a {
+    button, &#main-menu .button {
         display: block;
         margin-bottom: 30px;
         margin-top: 0;
@@ -174,6 +190,11 @@ canvas {
     > span {
         margin-left: 105px
     }
+
+    p {
+        margin: 20px 10px;
+        text-align: center;
+    }
 }
 
 .menu-main {
@@ -183,13 +204,19 @@ canvas {
     margin-left: -132px;
     position: absolute;
     text-shadow: 0 0 2px #000000;
-    top: 200px;
+    top: 220px;
     width: 264px;
     z-index: 3;
 
     button {
         display: block;
         margin: 0 auto 30px;
+        background-color: rgba(0, 0, 0, 0.35);
+        border: 3px solid rgba(0, 0, 0, 0.65);
+
+        &:hover {
+            background-color: rgba(0, 0, 0, 0.65);
+        }
     }
 }
 
@@ -219,22 +246,23 @@ a {
     }
 }
 
-button, .menu a {
-    background: url("../img/button.png") no-repeat scroll 8px 0 rgba(0, 0, 0, 0);
-    border: 0 none;
+button, .menu .button {
     color: #FFFFFF;
     cursor: pointer;
     display: inline-block;
     font-family: "courier new",monospace,sans-serif;
     margin: 69px auto 0;
-    padding: 13px 0 20px;
+    padding: 10px 0;
     position: relative;
     text-transform: uppercase;
     width: 162px;
     text-decoration: none;
+    font-size: 17px;
+    background-color: rgba(255, 255, 255, 0.35);
+    border: 3px solid rgba(255, 255, 255, 0.65);
 
     &:hover {
-        text-shadow: 0 0 2px #fff;
+        background-color: rgba(255, 255, 255, 0.65);
     }
 }
 
@@ -254,9 +282,9 @@ button, .menu a {
 
     span{height:40px; width:40px; display:block; position:relative;} 
 
-    .demoSpan1{width:35px; height:34px; border:2px solid #ccc; border-radius:3px;-webkit-border-radius:3px;-moz-border-radius:3px;}
+    .demoSpan1{width:35px; height:34px; border:2px solid #000; border-radius:3px;-webkit-border-radius:3px;-moz-border-radius:3px;}
 
-    .demoSpan1:before{content:''; height:3px; width:25px; background:#ccc; display:block; position:absolute; top:5px; left:5px; box-shadow:0 10px 0 #ccc, 0 20px 0 #ccc;-webkit-box-shadow:0 10px 0 #ccc, 0 20px 0 #ccc;-moz-box-shadow:0 10px 0 #ccc, 0 20px 0 #ccc;}
+    .demoSpan1:before{content:''; height:3px; width:25px; background:#000; display:block; position:absolute; top:5px; left:5px; box-shadow:0 10px 0 #000, 0 20px 0 #000;-webkit-box-shadow:0 10px 0 #000, 0 20px 0 #000;-moz-box-shadow:0 10px 0 #000, 0 20px 0 #000;}
 }
 
 #sound {
@@ -278,15 +306,15 @@ button, .menu a {
 
         .demoSpan1{position:relative;}
 
-        .demoSpan1:before{content:''; height:16px; width:12px; display:block; background:#ccc; position:absolute; top:12px; left:6px;}
+        .demoSpan1:before{content:''; height:16px; width:12px; display:block; background:#000; position:absolute; top:12px; left:6px;}
 
-        .demoSpan1:after{content:''; height:16px; width:0; display:block; border:10px transparent solid; border-left-width:0; border-right-color:#ccc; position:absolute; top:2px; left:16px; }
+        .demoSpan1:after{content:''; height:16px; width:0; display:block; border:10px transparent solid; border-left-width:0; border-right-color:#000; position:absolute; top:2px; left:16px; }
 
         .demoSpan2{position:absolute; top:0; left:0;}
 
-        .demoSpan2:before{content:''; height:44px; width:44px; display:block; border:2px solid #ccc; border-radius:40px;-webkit-border-radius:40px;-moz-border-radius:40px; position:absolute; top:-4px; left:-4px;}
+        .demoSpan2:before{content:''; height:44px; width:44px; display:block; border:2px solid #000; border-radius:40px;-webkit-border-radius:40px;-moz-border-radius:40px; position:absolute; top:-4px; left:-4px;}
 
-        .demoSpan2:after{content:''; height:46px; width:2px; display:block; background:#ccc; position:absolute; top:0px; left:20px; transform:rotate(45deg);-webkit-transform:rotate(45deg);-moz-transform:rotate(45deg);-o-transform:rotate(45deg);-ms-transform:rotate(45deg);}        
+        .demoSpan2:after{content:''; height:46px; width:2px; display:block; background:#000; position:absolute; top:0px; left:20px; transform:rotate(45deg);-webkit-transform:rotate(45deg);-moz-transform:rotate(45deg);-o-transform:rotate(45deg);-ms-transform:rotate(45deg);}        
     }
 
     &.enabled {
@@ -294,15 +322,15 @@ button, .menu a {
 
         .demoSpan1{position:relative;}
 
-        .demoSpan1:before{content:''; height:16px; width:12px; display:block; background:#ccc; position:absolute; top:12px; left:0px;}
+        .demoSpan1:before{content:''; height:16px; width:12px; display:block; background:#000; position:absolute; top:12px; left:0px;}
 
-        .demoSpan1:after{content:''; height:16px; width:0; display:block; border:10px transparent solid; border-left-width:0; border-right-color:#ccc; position:absolute; top:2px; left:12px;}
+        .demoSpan1:after{content:''; height:16px; width:0; display:block; border:10px transparent solid; border-left-width:0; border-right-color:#000; position:absolute; top:2px; left:12px;}
 
         .demoSpan2{position:absolute; top:0; left:0;}
 
-        .demoSpan2:before{content:''; height:40px; width:40px; display:block; border:4px solid transparent; border-right:4px solid #ccc; border-radius:40px;-webkit-border-radius:40px;-moz-border-radius:40px; position:absolute; top:-4px; left:-6px; }
+        .demoSpan2:before{content:''; height:40px; width:40px; display:block; border:4px solid transparent; border-right:4px solid #000; border-radius:40px;-webkit-border-radius:40px;-moz-border-radius:40px; position:absolute; top:-4px; left:-6px; }
 
-        .demoSpan2:after{content:''; height:30px; width:30px; display:block; border:4px solid transparent; border-right:4px solid #ccc; border-radius:20px;-webkit-border-radius:20px;-moz-border-radius:20px; position:absolute; top:2px; left:-4px; }
+        .demoSpan2:after{content:''; height:30px; width:30px; display:block; border:4px solid transparent; border-right:4px solid #000; border-radius:20px;-webkit-border-radius:20px;-moz-border-radius:20px; position:absolute; top:2px; left:-4px; }
     }
 }
 
@@ -389,7 +417,6 @@ button, .menu a {
     top: 22px;
     z-index: 2;
     opacity: 0.75;
-    display: none;
 
     &:hover #inner-stamina {
         color: #000;

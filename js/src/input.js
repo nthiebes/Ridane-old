@@ -26,6 +26,10 @@
 
     document.addEventListener('keydown', function(e) {
         setKey(e, true);
+
+        if( e.keyCode === 80 ){
+            console.log( player.pos[0] + player.hitbox[0] + mapOffset, player.pos[1] + mapOffset2 );
+        }
     });
 
     document.addEventListener('keyup', function(e) {

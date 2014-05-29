@@ -658,6 +658,7 @@ function supportType(audioType) {
 //////////////////////////////////////////////
 var enemyAttr = {
 	nudeGuy: {
+		type: 'melee',
 		aggroRange: 200,
 		health: 50,
 		damage: 10,
@@ -670,6 +671,7 @@ var enemyAttr = {
 	},
 
 	zombie: {
+		type: 'melee',
 		aggroRange: 200,
 		health: 50,
 		damage: 10,
@@ -686,9 +688,10 @@ var enemyAttr = {
 //////////////////////////////////////////////
 var playerAttr = {
 	nudeGuy: {
+		type: 'melee',
 		health: 75,
 		healthGeneration: 5,
-		damage: 10,
+		damage: 10, // 10
 		spriteOffset: 0,
 	    spriteHeight: 46,
 	    hitbox: [61, 27],
@@ -697,6 +700,7 @@ var playerAttr = {
 	},
 
 	zombie: {
+		type: 'melee',
 		health: 100,
 		healthGeneration: 5,
 		damage: 10,
@@ -735,6 +739,10 @@ var playerAttr = {
 
     document.addEventListener('keydown', function(e) {
         setKey(e, true);
+
+        if( e.keyCode === 80 ){
+            console.log( player.pos[0] + player.hitbox[0] + mapOffset, player.pos[1] + mapOffset2 );
+        }
     });
 
     document.addEventListener('keyup', function(e) {
@@ -914,6 +922,8 @@ var pause = false;
 var gameWidth = document.getElementById('inner-wrapper').offsetWidth;
 var gameHeight = document.getElementById('inner-wrapper').offsetHeight;
 var innerHp = document.getElementById('inner-hp');
+var innerStamina = document.getElementById('inner-stamina');
+var innerMana = document.getElementById('inner-mana');
 var rain = document.getElementById('rain');
 var soundElement = document.getElementById('sound');
 var moveRight = false;
@@ -926,6 +936,7 @@ var bullets = [];
 var enemies = [];
 var animations = [];
 var blocked = [];
+var events = [];
 var explosions = [];
 var lastFire = Date.now();
 var playerInFight = false;
@@ -934,11 +945,14 @@ var hitEnemy = false;
 var terrainPattern;
 var sound = false;
 var direction = 'right';
-var playerSpeed = 120; //120
+var playerSpeed = 320; //120
 var bulletSpeed = 500;
 var collision = false;
 var gameStarted = false;
 var soundStarted = false;
+var currentStamina = 100;
+var staminaRegeneration = 5;
+var staminaUsage = 10;
 var helpMenu = '';
 
 
@@ -1061,6 +1075,7 @@ function explosion( X, Y, couleur, nombre ){
 // Create player                            //
 //////////////////////////////////////////////
 var player = {
+    type: playerAttr.nudeGuy.type,
     health: playerAttr.nudeGuy.health,
     currentHealth: playerAttr.nudeGuy.health,
     healthGeneration: playerAttr.nudeGuy.healthGeneration,
@@ -1083,6 +1098,7 @@ enemies.push({
     attacking: false,
     alternativeDir: '',
     pos: [400, 400],
+    type: enemyAttr.zombie.type,
     health: enemyAttr.zombie.health,
     currentHealth: enemyAttr.zombie.health,
     damage: enemyAttr.zombie.damage,
@@ -1100,6 +1116,7 @@ enemies.push({
     attacking: false,
     alternativeDir: '',
     pos: [700, 170],
+    type: enemyAttr.zombie.type,
     health: enemyAttr.zombie.health,
     currentHealth: enemyAttr.zombie.health,
     damage: enemyAttr.zombie.damage,
@@ -1117,6 +1134,7 @@ enemies.push({
     attacking: false,
     alternativeDir: '',
     pos: [1270, 60],
+    type: enemyAttr.nudeGuy.type,
     health: enemyAttr.nudeGuy.health,
     currentHealth: enemyAttr.nudeGuy.health,
     damage: enemyAttr.nudeGuy.damage,
@@ -1134,6 +1152,7 @@ enemies.push({
     attacking: false,
     alternativeDir: '',
     pos: [1705, 270],
+    type: enemyAttr.nudeGuy.type,
     health: enemyAttr.nudeGuy.health,
     currentHealth: enemyAttr.nudeGuy.health,
     damage: enemyAttr.nudeGuy.damage,
@@ -1151,6 +1170,7 @@ enemies.push({
     attacking: false,
     alternativeDir: '',
     pos: [1150, 425],
+    type: enemyAttr.zombie.type,
     health: enemyAttr.zombie.health,
     currentHealth: enemyAttr.zombie.health,
     damage: enemyAttr.zombie.damage,
@@ -1168,6 +1188,7 @@ enemies.push({
     attacking: false,
     alternativeDir: '',
     pos: [1480, 350],
+    type: enemyAttr.zombie.type,
     health: enemyAttr.zombie.health,
     currentHealth: enemyAttr.zombie.health,
     damage: enemyAttr.zombie.damage,
@@ -1185,6 +1206,7 @@ enemies.push({
     attacking: false,
     alternativeDir: '',
     pos: [2100, 260],
+    type: enemyAttr.zombie.type,
     health: enemyAttr.zombie.health,
     currentHealth: enemyAttr.zombie.health,
     damage: enemyAttr.zombie.damage,
@@ -1206,6 +1228,22 @@ animations.push({
     pos: [1728, 282],
     sprite: new Sprite(animationPath, [0, 0], [32, 64], 7, [0, 1, 2, 3, 4, 5])
 });
+
+
+//////////////////////////////////////////////
+// Create events                            //
+//////////////////////////////////////////////
+events.push({
+    pos: [2120, 180],
+    callFunction: showMenu,
+    once: true,
+    menu: 'level-complete'
+});
+
+function showMenu( event ){
+    pause = true;
+    document.getElementById( event.menu + '-menu' ).style.display = 'block';
+}
 
 
 //////////////////////////////////////////////
@@ -1247,9 +1285,9 @@ function update(dt) {
 
     checkHealth(dt);
 
-    playerHitting();
+    checkStamina(dt);
 
-    //console.log( player.pos[0] + mapOffset, player.pos[1] + mapOffset2 );
+    playerHitting();
 
     // Rain
     if( raining ){
@@ -1317,7 +1355,6 @@ function drawImage2(){
 // Handle input                             //
 //////////////////////////////////////////////
 function handleInput(dt) {
-
     // Set movement values
     if( input.isDown('UP') || input.isDown('DOWN') || input.isDown('LEFT') || input.isDown('RIGHT') ){
         player.sprite.frames = [0, 1, 2, 3];
@@ -1369,6 +1406,9 @@ function handleInput(dt) {
                 for(var i=0; i<animations.length; i++) {
                     animations[i].pos[0] += movement;
                 }
+                for(var i=0; i<events.length; i++) {
+                    events[i].pos[0] += movement;
+                }
             } else{
                 // Move player
                 player.pos[0] -= movement;
@@ -1416,6 +1456,9 @@ function handleInput(dt) {
                 }
                 for(var i=0; i<animations.length; i++) {
                     animations[i].pos[0] -= movement;
+                }
+                for(var i=0; i<events.length; i++) {
+                    events[i].pos[0] -= movement;
                 }
             } else{
                 // Move player
@@ -1468,6 +1511,9 @@ function handleInput(dt) {
                 for(var i=0; i<animations.length; i++) {
                     animations[i].pos[1] -= movement;
                 }
+                for(var i=0; i<events.length; i++) {
+                    events[i].pos[1] -= movement;
+                }
             } else{
                 // Move player
                 player.pos[1] += movement;
@@ -1519,6 +1565,9 @@ function handleInput(dt) {
                 for(var i=0; i<animations.length; i++) {
                     animations[i].pos[1] += movement;
                 }
+                for(var i=0; i<events.length; i++) {
+                    events[i].pos[1] += movement;
+                }
             } else{
                 // Move player
                 player.pos[1] -= movement;
@@ -1528,8 +1577,14 @@ function handleInput(dt) {
     }
 
     // Default animation
-    if( !input.isDown('RIGHT') && !input.isDown('LEFT') && !input.isDown('UP') && !input.isDown('DOWN') && !input.isDown('SPACE') ){
-        if( !player.sprite.inProgress ){
+    if( (!input.isDown('RIGHT') && !input.isDown('LEFT') && !input.isDown('UP') && !input.isDown('DOWN') && !input.isDown('SPACE'))
+        || (input.isDown('SPACE') && currentStamina < staminaUsage) ){
+
+        var idx = Math.floor(player.sprite._index);
+        var frame = player.sprite.frames[idx % player.sprite.frames.length];
+
+        // Default animation if fight animation is done
+        if( !player.sprite.inProgress || ( currentStamina < staminaUsage && frame === player.sprite.frames.length - 3 ) ){
             // Reset sprite
             player.sprite.frames = [0];
             if( direction === 'left' ){
@@ -1545,7 +1600,7 @@ function handleInput(dt) {
         && !input.isDown('RIGHT')
         && !input.isDown('LEFT')
         && !input.isDown('UP')
-        && !input.isDown('DOWN') ){
+        && !input.isDown('DOWN') && currentStamina >= staminaUsage ){
 
         player.sprite.speed = player.fightAnimationSpeed;
         player.sprite.inProgress = true;
@@ -1564,11 +1619,18 @@ function handleInput(dt) {
 //////////////////////////////////////////////
 function playerHitting(){
     if( player.sprite.inProgress ){
-        // Successful hit
         var idx = Math.floor(player.sprite._index);
         var frame = player.sprite.frames[idx % player.sprite.frames.length];
 
+        // Successful hit
         if( frame === player.sprite.frames.length - 2 && hitEnemy ){
+            // Use stamina
+            if( currentStamina < staminaUsage ){
+                return false;
+            }
+            currentStamina -= staminaUsage;
+            innerStamina.style.width = currentStamina + '%';
+
             hitEnemy = false;
             for( var i=0; i<enemies.length; i++ ){
                 // Enemy on left side and in range
@@ -1588,7 +1650,7 @@ function playerHitting(){
                     dealDamageToEnemy( enemies[i], i );
                 }
             }
-            
+
         } else if( frame === player.sprite.frames.length - 3 ){
             hitEnemy = true;
         }
@@ -1646,6 +1708,14 @@ function updateEntities(dt) {
 function checkCollisions(){
     // Check if player is at map border
     checkObjectBounds(player);
+
+    // Check player collision with event object
+    for( var i=0; i<events.length; i++ ){
+        if( boxCollides(events[i].pos, [32, 32], [player.pos[0] + player.hitbox[0], player.pos[1]], [player.hitbox[1], player.spriteHeight]) ){
+            events[i].callFunction( events[i] );
+        }
+    }
+
 
     // Check if enemies are at map border
     /*for( var i=0; i<enemies.length; i++ ){
@@ -1797,6 +1867,21 @@ function checkHealth(dt){
         var addedHealthPoints = player.healthGeneration * dt;
         player.currentHealth += addedHealthPoints;
         innerHp.style.width = (Math.floor(player.currentHealth) / player.health) * 100 + '%';
+    }
+}
+
+
+//////////////////////////////////////////////
+// Check and generate stamina               //
+//////////////////////////////////////////////
+function checkStamina(dt){
+    if( currentStamina < 100 ){
+        if( currentStamina < 0 ){
+            currentStamina = 0;
+        }
+        var addedStaminaPoints = staminaRegeneration * dt;
+        currentStamina += addedStaminaPoints;
+        innerStamina.style.width = Math.floor(currentStamina) + '%';
     }
 }
 
@@ -2186,6 +2271,12 @@ function moveEnemy( enemyPos, i, dt ){
             collisionDir[1] = true;
         }
 
+        // Map border
+        if( enemyX + enemies[i].hitbox[0] < 0 ){
+            enemyCollision = true;
+            collisionDir[1] = true;
+        }
+
         if( !enemyCollision ){
             enemies[i].pos[0] -= movement;
             movementDir[1] = true;
@@ -2219,6 +2310,12 @@ function moveEnemy( enemyPos, i, dt ){
 
         // Player collision
         if( boxCollides(playerPos, [player.hitbox[1], player.spriteHeight], [ enemyX + movement + enemies[i].hitbox[0], enemyY ], enemySize) ){
+            enemyCollision = true;
+            collisionDir[3] = true;
+        }
+
+        // Map border
+        if( enemyX + enemies[i].hitbox[0] > gameWidth - enemies[i].hitbox[1] ){
             enemyCollision = true;
             collisionDir[3] = true;
         }
@@ -2260,6 +2357,12 @@ function moveEnemy( enemyPos, i, dt ){
             collisionDir[2] = true;
         }
 
+        // Map border
+        if( enemyY < 0 ){
+            enemyCollision = true;
+            collisionDir[2] = true;
+        }
+
         if( !enemyCollision ){
             enemies[i].pos[1] -= movement;
             movementDir[2] = true;
@@ -2297,6 +2400,12 @@ function moveEnemy( enemyPos, i, dt ){
 
         // Player collision
         if( boxCollides(playerPos, [player.hitbox[1], player.spriteHeight + 1], [ enemyX + enemies[i].hitbox[0], enemyY + movement ], enemySize) ){
+            enemyCollision = true;
+            collisionDir[0] = true;
+        }
+
+        // Map border
+        if( enemyY > gameHeight - enemies[i].sprite.size[1] ){
             enemyCollision = true;
             collisionDir[0] = true;
         }
@@ -2457,7 +2566,10 @@ function moveEnemy( enemyPos, i, dt ){
             collisionDir[3] = true;
         }
 
-
+        // Map border
+        if( enemyX + enemies[i].hitbox[0] > gameWidth - enemies[i].hitbox[1] ){
+            collisionDir[3] = true;
+        }
 
         // Movement
         if( ( !movementDir[0] && !movementDir[2] && !collisionDir[3] ) ){
@@ -2493,6 +2605,11 @@ function moveEnemy( enemyPos, i, dt ){
         if( boxCollides(playerPos, [player.hitbox[1] + 1, player.spriteHeight], [ enemyX - movement + enemies[i].hitbox[0], enemyY ], enemySize) ){
             collisionDir[1] = true;
         }
+
+        // Map border
+        if( enemyX + enemies[i].hitbox[0] < 0 ){
+            collisionDir[1] = true;
+        }
         
         // Movement
         if( ( !movementDir[0] && !movementDir[2] && !collisionDir[1] ) ){
@@ -2526,6 +2643,11 @@ function moveEnemy( enemyPos, i, dt ){
 
         // Player collision
         if( boxCollides(playerPos, [player.hitbox[1], player.spriteHeight + 1], [ enemyX + enemies[i].hitbox[0], enemyY - movement ], enemySize) ){
+            collisionDir[2] = true;
+        }
+
+        // Map border
+        if( enemyY < 0 ){
             collisionDir[2] = true;
         }
 
@@ -2568,6 +2690,11 @@ function moveEnemy( enemyPos, i, dt ){
             collisionDir[0] = true;
         }
 
+        // Map border
+        if( enemyY > gameHeight - enemies[i].sprite.size[1] ){
+            collisionDir[0] = true;
+        }
+
         // Movement
         if( !movementDir[1] && !movementDir[3] && !collisionDir[0] ){
             enemies[i].pos[1] += movement;
@@ -2607,7 +2734,6 @@ function moveEnemy( enemyPos, i, dt ){
         enemies[i].sprite.speed = enemies[i].walkAnimationSpeed;
         enemies[i].sprite.inProgress = false;
         enemies[i].attacking = false;
-        playerInFight = false;
     }
 
     // Reset
