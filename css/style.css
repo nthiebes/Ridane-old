@@ -549,6 +549,11 @@ canvas {
     .menu-main button:hover {
       background-color: rgba(0, 0, 0, 0.65); }
 
+.small-text {
+  font-size: 9px;
+  display: inline-block;
+  font-family: verdana, sans-serif; }
+
 h1 {
   font-size: 35px;
   color: #FFFFFF;
