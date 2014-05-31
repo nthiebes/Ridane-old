@@ -1,11 +1,11 @@
 //////////////////////////////////////////////
-// Attributes of all player types  test     //
+// Attributes of all player types  		    //
 //////////////////////////////////////////////
 var playerAttr = {
 	nudeGuy: {
 		type: 'melee',
 		health: 75,
-		healthGeneration: 5,
+		healthGeneration: 10,
 		damage: 10, // 10
 		spriteOffset: 0,
 	    spriteHeight: 46,

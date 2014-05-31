@@ -13,7 +13,7 @@ function moveEnemy( enemyPos, i, dt ){
         collisionDir = [false, false, false, false],
         movementDir = [false, false, false, false];
 
-
+    playerInFight = true;
 
     // Movement left
     if( playerX + player.hitbox[1] + 1 < enemyX && enemies[i].alternativeDir !== 'right' ){

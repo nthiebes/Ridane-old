@@ -678,19 +678,19 @@ var enemyAttr = {
 		spriteOffset: 604,
 	    spriteHeight: 46,
 	    hitbox: [61, 27],
-	    walkAnimationSpeed: 4.5,
+	    walkAnimationSpeed: 5,
 	    fightAnimationSpeed: 4.5,
-	    speed: 75
+	    speed: 65
 	}
 };
 //////////////////////////////////////////////
-// Attributes of all player types           //
+// Attributes of all player types  		    //
 //////////////////////////////////////////////
 var playerAttr = {
 	nudeGuy: {
 		type: 'melee',
 		health: 75,
-		healthGeneration: 5,
+		healthGeneration: 10,
 		damage: 10, // 10
 		spriteOffset: 0,
 	    spriteHeight: 46,
@@ -701,14 +701,14 @@ var playerAttr = {
 
 	zombie: {
 		type: 'melee',
-		health: 100,
+		health: 75,
 		healthGeneration: 5,
 		damage: 10,
 		spriteOffset: 604,
 	    spriteHeight: 46,
 	    hitbox: [61, 27],
-	    walkAnimationSpeed: 5.5,
-	    fightAnimationSpeed: 6.5
+	    walkAnimationSpeed: 4.5,
+	    fightAnimationSpeed: 5.5
 	}
 };
 (function() {
@@ -718,7 +718,9 @@ var playerAttr = {
         var code = event.keyCode;
         var key;
 
-        switch(code) {
+        switch(code){
+        case 17:
+            key = 'CMD'; break;
         case 32:
             key = 'SPACE'; break;
         case 37:
@@ -945,13 +947,13 @@ var hitEnemy = false;
 var terrainPattern;
 var sound = false;
 var direction = 'right';
-var playerSpeed = 320; //120
+var playerSpeed = 120; //120
 var bulletSpeed = 500;
 var collision = false;
 var gameStarted = false;
 var soundStarted = false;
 var currentStamina = 100;
-var staminaRegeneration = 5;
+var staminaRegeneration = 10;
 var staminaUsage = 10;
 var helpMenu = '';
 
@@ -1611,6 +1613,16 @@ function handleInput(dt) {
         }
         player.sprite.frames = [0, 1, 2, 1];
     }
+
+    // Attack animation
+    /*if( input.isDown('CMD')
+        && !input.isDown('RIGHT')
+        && !input.isDown('LEFT')
+        && !input.isDown('UP')
+        && !input.isDown('DOWN') && currentStamina >= staminaUsage ){
+
+        console.log('CMD');
+    }*/
 }
 
 
@@ -1881,6 +1893,9 @@ function checkStamina(dt){
         }
         var addedStaminaPoints = staminaRegeneration * dt;
         currentStamina += addedStaminaPoints;
+        if( currentStamina > 100 ){
+            currentStamina = 100;
+        }
         innerStamina.style.width = Math.floor(currentStamina) + '%';
     }
 }
@@ -2243,7 +2258,7 @@ function moveEnemy( enemyPos, i, dt ){
         collisionDir = [false, false, false, false],
         movementDir = [false, false, false, false];
 
-
+    playerInFight = true;
 
     // Movement left
     if( playerX + player.hitbox[1] + 1 < enemyX && enemies[i].alternativeDir !== 'right' ){
@@ -2753,7 +2768,6 @@ function fight( enemy ){
     enemy.attacking = true;
     enemy.sprite.speed = enemy.fightAnimationSpeed;
     enemy.sprite.inProgress = true;
-    playerInFight = true;
 
     // Direction
     if( enemy.pos[0] > player.pos[0] ){

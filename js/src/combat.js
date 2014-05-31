@@ -11,7 +11,6 @@ function fight( enemy ){
     enemy.attacking = true;
     enemy.sprite.speed = enemy.fightAnimationSpeed;
     enemy.sprite.inProgress = true;
-    playerInFight = true;
 
     // Direction
     if( enemy.pos[0] > player.pos[0] ){

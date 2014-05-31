@@ -51,13 +51,13 @@ var hitEnemy = false;
 var terrainPattern;
 var sound = false;
 var direction = 'right';
-var playerSpeed = 320; //120
+var playerSpeed = 120; //120
 var bulletSpeed = 500;
 var collision = false;
 var gameStarted = false;
 var soundStarted = false;
 var currentStamina = 100;
-var staminaRegeneration = 5;
+var staminaRegeneration = 10;
 var staminaUsage = 10;
 var helpMenu = '';
 
@@ -717,6 +717,16 @@ function handleInput(dt) {
         }
         player.sprite.frames = [0, 1, 2, 1];
     }
+
+    // Attack animation
+    /*if( input.isDown('CMD')
+        && !input.isDown('RIGHT')
+        && !input.isDown('LEFT')
+        && !input.isDown('UP')
+        && !input.isDown('DOWN') && currentStamina >= staminaUsage ){
+
+        console.log('CMD');
+    }*/
 }
 
 
@@ -987,6 +997,9 @@ function checkStamina(dt){
         }
         var addedStaminaPoints = staminaRegeneration * dt;
         currentStamina += addedStaminaPoints;
+        if( currentStamina > 100 ){
+            currentStamina = 100;
+        }
         innerStamina.style.width = Math.floor(currentStamina) + '%';
     }
 }

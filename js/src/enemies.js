@@ -23,8 +23,8 @@ var enemyAttr = {
 		spriteOffset: 604,
 	    spriteHeight: 46,
 	    hitbox: [61, 27],
-	    walkAnimationSpeed: 4.5,
+	    walkAnimationSpeed: 5,
 	    fightAnimationSpeed: 4.5,
-	    speed: 75
+	    speed: 65
 	}
 };

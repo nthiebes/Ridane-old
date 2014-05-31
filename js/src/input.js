@@ -5,7 +5,9 @@
         var code = event.keyCode;
         var key;
 
-        switch(code) {
+        switch(code){
+        case 17:
+            key = 'CMD'; break;
         case 32:
             key = 'SPACE'; break;
         case 37:
