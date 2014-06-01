@@ -46,6 +46,7 @@ var events = [];
 var explosions = [];
 var lastFire = Date.now();
 var playerInFight = false;
+var playerPunching = false;
 var gameTime = 0;
 var hitEnemy = false;
 var terrainPattern;
@@ -470,6 +471,7 @@ function handleInput(dt) {
         }
         player.sprite.inProgress = false;
         var movement = Math.floor(playerSpeed * dt);
+        playerPunching = false;
     }
 
     // Move left
@@ -698,6 +700,7 @@ function handleInput(dt) {
             } else{
                 player.sprite.pos = [player.spriteOffset, 0];
             }
+            playerPunching = false;
         }
     }
 
@@ -716,17 +719,18 @@ function handleInput(dt) {
             player.sprite.pos = [player.spriteOffset, player.spriteHeight*4];
         }
         player.sprite.frames = [0, 1, 2, 1];
+        playerPunching = true;
     }
 
-    // Attack animation
-    /*if( input.isDown('CMD')
+    // Block / Aim / Focus
+    if( input.isDown('CMD')
         && !input.isDown('RIGHT')
         && !input.isDown('LEFT')
         && !input.isDown('UP')
         && !input.isDown('DOWN') && currentStamina >= staminaUsage ){
 
         console.log('CMD');
-    }*/
+    }
 }
 
 
@@ -991,7 +995,7 @@ function checkHealth(dt){
 // Check and generate stamina               //
 //////////////////////////////////////////////
 function checkStamina(dt){
-    if( currentStamina < 100 ){
+    if( currentStamina < 100 && !playerPunching ){
         if( currentStamina < 0 ){
             currentStamina = 0;
         }
