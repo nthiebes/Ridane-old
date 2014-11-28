@@ -4,15 +4,12 @@
 	<title>Ridane &#60;&#62; Canvas Action-Adventure</title>
 
 	<meta charset="utf-8">
-	<!--meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
-	<meta name="apple-mobile-web-app-capable" content="yes">
-	<meta name="apple-mobile-web-app-title" content="Ridane"-->
 
 	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
 	<link rel="stylesheet" href="css/style.css" type="text/css">
 </head>
 
-<body>
+<body class="lightning">
 	<div id="outer-wrapper">
 		<div id="inner-wrapper">
 			<div id="game-interface">
@@ -34,11 +31,11 @@
 
 				<div id="fps"></div>
 
-				<div id="menu">
+				<div id="menu" title="Menu">
 					<span class="demoSpan1"></span>
 				</div>
 			</div>
-			<div id="sound" class="muted">
+			<div id="sound" class="muted" title="Sound on/off">
 				<span class="demoSpan1">
 				<span class="demoSpan2">
 			</div>
@@ -53,7 +50,7 @@
 
 			<div class="menu" id="main-menu">
 				<button id="play-button">Play</button>
-				<button id="help-button-main">Help</button>
+				<button id="help-button-main">Info</button>
 				<a class="button" href="https://github.com/nthiebes/Ridane" target="_blank">Credits<span> (on GitHub)</span></a>
 			</div>
 			<div id="ridane"></div>
@@ -69,20 +66,20 @@
 			<div class="menu" id="game-over-menu">
 				<h1>Game Over</h1>
 				<button id="play-again-button">Play Again</button>
-				<button class="help-button">Help</button>
+				<button class="help-button">Info</button>
 				<button class="main-menu-button">Main Menu</button>
 			</div>
 
 			<div class="menu" id="level-complete-menu">
 				<h1>Level completed!</h1>
-				<p>Thank you for trying out my game! The next level and more features will be available very soon ;). Be sure to check out the <a target="_blank" href="http://github.com/nthiebes/Ridane/">GitHub</a> project for updates and more info.</p>
-				<button disabled="disabled" id="next-level-button">Next Level</button>
-				<button class="help-button">Help</button>
+				<!--p>Thank you for trying out my game! The next level and more features will be available very soon ;). Be sure to check out the <a target="_blank" href="http://github.com/nthiebes/Ridane/">GitHub</a> project for updates and more info.</p-->
+				<button id="next-level-button">Next Level</button>
+				<button class="help-button">Info</button>
 				<button class="main-menu-button">Main Menu</button>
 			</div>
 
 			<div class="menu" id="help-menu">
-				<h1>Help</h1>
+				<h1>Info</h1>
 				<button class="back-button">&#60; Back</button>
 				<span>Move: <kbd>LEFT</kbd> <kbd>RIGHT</kbd> <kbd>UP</kbd> <kbd>DOWN</kbd></span>
 				<br>
@@ -104,30 +101,17 @@
 				Skills: <kbd>1</kbd> <kbd>2</kbd> <kbd>3</kbd> <div class="small-text">(soon &#8482;)</div>
 			</div>
 
+			<div class="menu" id="level2-start-menu">
+				<h1>Gear found!</h1>
+				<p>You found some armour and weapons in the cave and can now choose your equipment!</p>
+				<ul class="">
+					<li></li>
+				</ul>
+				<button class="continue">Continue</button>
+			</div>
+
 			<div id="loading">
 				<div id="loading-text">Loading pixels</div>
-				<div class="windows8">
-					<div class="wBall" id="wBall_1">
-						<div class="wInnerBall">
-						</div>
-					</div>
-					<div class="wBall" id="wBall_2">
-						<div class="wInnerBall">
-						</div>
-					</div>
-					<div class="wBall" id="wBall_3">
-						<div class="wInnerBall">
-						</div>
-					</div>
-					<div class="wBall" id="wBall_4">
-						<div class="wInnerBall">
-						</div>
-					</div>
-					<div class="wBall" id="wBall_5">
-						<div class="wInnerBall">
-						</div>
-					</div>
-				</div>
 			</div>
 		</div>
 	</div>

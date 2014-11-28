@@ -23,7 +23,7 @@ module.exports = function(grunt) {
 		},
 		concat: {
 			dist: {
-				src: ['js/src/jquery.mb.audio.js', 'js/src/enemies.js', 'js/src/player.js', 'js/src/input.js', 'js/src/sprite.js', 'js/src/ressources.js', 'js/src/core.js', 'js/src/enemyMovement.js', 'js/src/combat.js'],
+				src: ['js/src/jquery.mb.audio.js', 'js/src/enemies.js', 'js/src/player.js', 'js/src/input.js', 'js/src/sprite.js', 'js/src/ressources.js', 'js/src/loadLevel.js', 'js/src/core.js', 'js/src/enemyMovement.js', 'js/src/combat.js'],
 				dest: 'js/dest/compiled.js',
 			},
 		},

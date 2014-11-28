@@ -37,10 +37,17 @@ function fight( enemy ){
 // Calculate and deal damage to player      //
 //////////////////////////////////////////////
 function dealDamageToPlayer( enemy ){
+    // Blocking
+    if( playerBlocking && ( (enemy.pos[0] > player.pos[0] && direction === 'right') || (enemy.pos[0] < player.pos[0] && direction === 'left') ) ){
+        return false;
+    }
+
+    // Play sound
     if( sound ){
         $.mbAudio.play('effectSprite2', 'grunt' + getRandom(1,5));
     }
 
+    // Deal damage
     player.currentHealth -= enemy.damage;
     innerHp.style.width = (player.currentHealth / player.health) * 100 + '%';
     if( player.currentHealth <= 0 ){

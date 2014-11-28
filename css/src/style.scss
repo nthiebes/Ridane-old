@@ -245,7 +245,7 @@ h2 {
 }
 
 a {
-    color: #DDDDDD;
+    color: #ff0;
 
     &:hover {
         color: #FFF;
@@ -269,6 +269,10 @@ button, .menu .button {
 
     &:hover {
         background-color: rgba(255, 255, 255, 0.65);
+
+        &:disabled {
+            background-color: rgba(255, 255, 255, 0.35);
+        }
     }
 }
 
