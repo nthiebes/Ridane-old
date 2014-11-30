@@ -15,7 +15,8 @@ body {
   font-family: "courier new", monospace, sans-serif;
   overflow: hidden;
   color: #FFF;
-  cursor: default; }
+  cursor: default;
+  font-size: 16px; }
 
 #outer-wrapper {
   background: url("../img/frame.png") no-repeat scroll center -118px transparent;
@@ -49,12 +50,23 @@ canvas {
   opacity: 0;
   position: absolute; }
 
+#cr {
+  color: #ccc;
+  font-size: 13px;
+  left: 50%;
+  margin-left: -355px;
+  position: absolute;
+  top: 538px; }
+
 @media (min-height: 637px) {
   body #outer-wrapper {
     background-position: center 2px; }
 
   #inner-wrapper {
-    top: 125px; } }
+    top: 125px; }
+
+  #cr {
+    top: 658px; } }
 *[title] {
   cursor: help; }
 
@@ -260,7 +272,8 @@ h2 {
   text-transform: uppercase; }
 
 a {
-  color: #ff0; }
+  color: #ccc;
+  text-decoration: none; }
   a:hover {
     color: #FFF; }
 

@@ -20,6 +20,7 @@ body {
     overflow: hidden;
     color: #FFF;
     cursor: default;
+    font-size: 16px;
 }
 
 #outer-wrapper {
@@ -58,6 +59,15 @@ canvas {
     position: absolute;
 }
 
+#cr {
+    color: #ccc;
+    font-size: 13px;
+    left: 50%;
+    margin-left: -355px;
+    position: absolute;
+    top: 538px;
+}
+
 @media (min-height: 637px){
     body #outer-wrapper {
         background-position: center 2px;
@@ -65,6 +75,10 @@ canvas {
 
     #inner-wrapper {
         top: 125px;
+    }
+
+    #cr {
+        top: 658px;
     }
 }
 
@@ -245,7 +259,8 @@ h2 {
 }
 
 a {
-    color: #ff0;
+    color: #ccc;
+    text-decoration: none;
 
     &:hover {
         color: #FFF;

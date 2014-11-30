@@ -36,6 +36,9 @@ function loadLevel( newLevel ){
 	collision = false;
 	currentStamina = 100;
 
+    animations = levelData[currentLevel].animations;
+    events = levelData[currentLevel].events;
+
 	// Blocked fields
     for( var i=0; i<blockedPositions.length; i++ ){
         blocked.push({
@@ -44,16 +47,23 @@ function loadLevel( newLevel ){
         });
     }
 
+    // Update canvas
+    var canvasElements = document.getElementsByTagName('canvas');
+    for( var i=0; i < canvasElements.length; i++ ){
+        if( canvasElements[i].getAttribute('id') !== 'rain' ){
+            canvasElements[i].width = levels[currentLevel][0][0].length * 32;
+            canvasElements[i].style.left = 0;
+        }
+    }
+
     // Draw layers
     canvas2.width = canvas2.width;
     canvas3.width = canvas3.width;
     drawImage();
     drawImage2();
-    canvas2.style.left = 0;
-    canvas3.style.left = 0;
 
     // New player character
-    player = newPlayer( 'nudeGuy', [25, 215] );
+    player = levelData[currentLevel].player();
 
     // Reset interface
     if( levelData[currentLevel].lightning ){

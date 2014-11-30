@@ -29,6 +29,17 @@
     document.addEventListener('keydown', function(e) {
         setKey(e, true);
 
+        // Switch between levels
+        if( testMode ){
+            if( e.keyCode === 102 ){
+                currentLevelInt++;
+                loadLevel(currentLevelInt);
+            } else if( e.keyCode === 100 ){
+                currentLevelInt--;
+                loadLevel(currentLevelInt);
+            }
+        }
+
         if( e.keyCode === 80 ){
             console.log( player.pos[0] + player.hitbox[0] + mapOffset, player.pos[1] + mapOffset2 );
         }

@@ -17,12 +17,12 @@ var playerAttr = {
 	zombie: {
 		type: 'melee',
 		health: 75,
-		healthGeneration: 5,
+		healthGeneration: 10,
 		damage: 10,
 		spriteOffset: 604,
 	    spriteHeight: 46,
 	    hitbox: [61, 27],
-	    walkAnimationSpeed: 4.5,
+	    walkAnimationSpeed: 5,
 	    fightAnimationSpeed: 5.5
 	}
 };
